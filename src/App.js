@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Home from "./components/pages/Home";
+import NewHome from "./components/pages/NewHome";
 import About from "./components/pages/About";
 import Ricensisci from "./components/pages/Recensisci";
 import Consigliami from "./components/pages/Consigliami";
@@ -16,13 +16,14 @@ function App() {
       <Router>
         <Navbar />
         <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/about" component={About} />
-          <Route path="/ricensisci" component={Ricensisci} />
-          <Route path="/consigliami" component={Consigliami}></Route>
-          <Route path="/trova-ateneo" component={TrovaAteneo} />
-          <Route path="/trova-corso-di-laurea" component={TrovaCorsoDiLaurea} />
-          <Route path="/sign-up" component={SignUp} />
+        <Route path="/" exact component={NewHome} />
+        <Route path="/about"  exact component={About} />
+          <Route path="/ricensisci" exact component={Ricensisci} />
+          <Route path="/consigliami" exact component={Consigliami}></Route>
+          <Route path="/trova-ateneo"  exact component={TrovaAteneo} />
+          <Route path="/trova-corso-di-laurea"  exact component={TrovaCorsoDiLaurea} />
+          <Route path="/sign-up" exact component={SignUp} />
+         
         </Switch>
       </Router>
     </>

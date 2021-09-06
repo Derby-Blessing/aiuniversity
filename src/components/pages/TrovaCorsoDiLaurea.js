@@ -9,7 +9,7 @@ class TrovaCorsoDiLaurea extends React.Component {
   }
   render() {
     return (
-      <body>
+      <>
       <h1 className='TrovaCorsoDiLaurea'>TROVA CORSO DI LAUREA</h1>
       <form>
       <label>Scegli Corso</label>
@@ -31,7 +31,7 @@ class TrovaCorsoDiLaurea extends React.Component {
         <label>Recensioni Ateneo:</label>
         <input type="text" />
       </form>
-      </body>
+      </>
     );
   }
 }

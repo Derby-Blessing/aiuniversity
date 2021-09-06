@@ -8,7 +8,7 @@ import React from 'react';
 class Consigliami extends React.Component {
   render() {
     return (
-      <body>
+      <>
         <center>    
       <div className="card col-6">
           <h1 className='card-header bg-info'>CONSIGLIAMI</h1>
@@ -33,7 +33,7 @@ class Consigliami extends React.Component {
         </div>
         </div>
         </center>
-        </body>
+        </>
         
     );
   }

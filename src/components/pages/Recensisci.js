@@ -8,7 +8,7 @@ import ReactDOM from "react-dom";
 class Recensisci extends React.Component {
   render() {
     return (
-      <body>
+      <>
         <h1 className="Recensisci">RECENSISCI</h1>
         <form>
           <label>Età:</label>
@@ -68,7 +68,7 @@ class Recensisci extends React.Component {
           <label>Lavoro Sognato:</label>
           <input type="text" />
         </form>
-      </body>
+      </>
     );
   }
 }

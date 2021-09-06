@@ -14,7 +14,7 @@ class TrovaAteneo extends React.Component {
   }
   render() {
     return (
-      <body>
+      <>
       <h1 className='TrovaAteneo'>TROVA ATENEO</h1>
       <form>
       <label>Scegli Ateneo</label>
@@ -35,7 +35,7 @@ class TrovaAteneo extends React.Component {
         <input type="text" />
         <label>Recensioni Ateneo:</label>
       </form>
-      </body>
+      </>
     );
   }
 }

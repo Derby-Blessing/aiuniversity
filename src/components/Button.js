@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 import { Link } from 'react-router-dom';
 
 const STYLES = ["btn--primary", "btn--outline"];
@@ -29,4 +29,4 @@ export const Button = ({
     </button>
     </Link>
   );
-};
+};*/
