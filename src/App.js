@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "./components/Navbar";
+import Menu from "./components/Navbar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NewHome from "./components/pages/NewHome";
 import About from "./components/pages/About";
@@ -14,7 +14,7 @@ function App() {
   return (
     <>
       <Router>
-        <Navbar />
+        <Menu />
         <Switch>
         <Route path="/" exact component={NewHome} />
         <Route path="/about"  exact component={About} />
