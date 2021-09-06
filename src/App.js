@@ -1,10 +1,9 @@
 import React from "react";
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-//import "./App.css";
 import Home from "./components/pages/Home";
 import About from "./components/pages/About";
-import Ricensisci from "./components/pages/Ricensisci";
+import Ricensisci from "./components/pages/Recensisci";
 import Consigliami from "./components/pages/Consigliami";
 import TrovaAteneo from "./components/pages/TrovaAteneo";
 import TrovaCorsoDiLaurea from "./components/pages/TrovaCorsoDiLaurea";

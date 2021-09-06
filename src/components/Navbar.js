@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+//import React, { useState } from "react";
+import React from 'react';
 import { Button } from "./Button";
-//import "./Navbar.css";
 import { Link } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.css";
 
-function Navbar() {
+/*function Navbar() {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
 
@@ -21,78 +22,48 @@ function Navbar() {
   window.addEventListener("resize", showButton);
 
   return (
-    <>
-      <nav className="NavbarItems">
-        <div className="navbar-container">
-          <Link to="/" className="navbar-logo">
-            <i className="fa fa-university" aria-hidden="true"></i>
-            AIUNIVERSITY: <br></br> The Italian University Advisor{" "}
-          </Link>
-          <div className="menu-icon" onClick={handleClick}>
-            <i className={click ? "fas fa-times" : "fas fa-bars"} />
+    <>*/
+    class Navbar extends React.Component {
+      render() {
+        return (
+          <>
+          <nav class="navbar navbar-expand-sm bg-light justify-content">
+          <a class="navbar-brand" href="#">AIUNIVERSITY: <br></br> The Italian University Advisor</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="/home">Home</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="/about">About</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="/ricensisci">Recensisci</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="/consigliami">Consigliami</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="/trova-ateneo">Trova Ateneo</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="/trova-corso-di-laurea">Trova Corso Di Laurea</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="/sign-up">Sign Up</a>
+                </li>
+            </ul>
           </div>
-          <ul className={click ? "nav-menu active" : "nav-menu"}>
-            <li className="nav-item">
-              <Link to="/home" className="nav-links" onClick={closeMobileMenu}>
-                Home
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/about" className="nav-links" onClick={closeMobileMenu}>
-                About
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                to="/ricensisci"
-                className="nav-links"
-                onClick={closeMobileMenu}
-              >
-                Ricensisci
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                to="/consigliami"
-                className="nav-links"
-                onClick={closeMobileMenu}
-              >
-                Consigliami
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                to="/trova-ateneo"
-                className="nav-links"
-                onClick={closeMobileMenu}
-              >
-                Trova Ateneo
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                to="/trova-corso-di-laurea"
-                className="nav-links"
-                onClick={closeMobileMenu}
-              >
-                Trova Corso Di Laurea
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                to="/sign-up"
-                className="nav-links-mobile"
-                onClick={closeMobileMenu}
-              >
-                Sign Up
-              </Link>
-            </li>
-          </ul>
-          {button && <Button buttonStyle="btn--outline">SIGN UP</Button>}
-        </div>
-      </nav>
+        </nav>
     </>
   );
 }
+}
 
-export default Navbar;
+
+
+export default Navbar

@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from "react-dom";
-//import '../../App.css';
 
 /*export const  pippo= ()=> {
   return <h1 className='TrovaAteneo'>TROVA ATENEO</h1>;
@@ -18,18 +17,23 @@ class TrovaAteneo extends React.Component {
       <body>
       <h1 className='TrovaAteneo'>TROVA ATENEO</h1>
       <form>
+      <label>Scegli Ateneo</label>
       <select value={this.state.myUni}>
         <option value="Università Degli Studi Di Parma">Università Degli Studi Di Parma</option>
         <option value="Università Di Modena">Università Di Modena</option>
         <option value="Università Di Bologna">Università Di Bologna</option>
-      </select>
-      <label>Nome Ateneo:</label>
+      </select> <br></br>
+      <label>Informazione:</label>
         <input type="text" />
-        <p>Luogo:</p>
+        <label>Regione:</label>
         <input type="text" />
-        <p>Sito Web:</p>
+        <label>Provincia:</label>
         <input type="text" />
-        <p>Ricensioni:</p>
+        <label>Recensioni:</label>
+        <input type="text" />
+        <label>Corsi:</label>
+        <input type="text" />
+        <label>Recensioni Ateneo:</label>
       </form>
       </body>
     );
