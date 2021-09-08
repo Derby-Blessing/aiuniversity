@@ -271,19 +271,19 @@ class Recensisci extends React.Component {
 <Row>
   <Col  md="auto">
   <Card className="text-center">
-  <Card.Header  as="h2"  style={color}>Recensisci</Card.Header>
+  <Card.Header  as="h1"  style={color}>Recensisci</Card.Header>
   <Card.Body>
     <Form>
     <Row >
     <Col md>
     <Form.Group controlId="formGridAge" >
-      <Form.Label>Quanti anni hai?</Form.Label>
+      <Form.Label as="h5">Quanti anni hai?*</Form.Label>
       <Form.Control  />
     </Form.Group>
     </Col>
     <Col md>
     <Form.Group as={Col} controlId="formGridGenere">
-      <Form.Label>Genere?</Form.Label>
+      <Form.Label as="h5">Genere?*</Form.Label>
       <Form.Select defaultValue="Scegli">
         <option>Femmina</option>
         <option>Maschio</option>
@@ -300,34 +300,35 @@ class Recensisci extends React.Component {
     <Row >
     <Col md>
     <Form.Group  controlId="formGridResidence">
-      <Form.Label>Da dove vieni?</Form.Label>
+      <Form.Label as="h5">Da dove vieni?*</Form.Label>
       <Form.Control />
     </Form.Group>
     </Col>
     <Col md>
     <Form.Group  controlId="formGridResidence">
-      <Form.Label>Comune:</Form.Label>
+      <Form.Label as="h5">Comune:*</Form.Label>
       <Form.Control />
     </Form.Group>
     </Col>
     <Col md>
   <Form.Group  controlId="home_province">
-    <Form.Label>Provincia:</Form.Label>
+    <Form.Label as="h5">Provincia:*</Form.Label>
       <Province></Province>
           </Form.Group>
           </Col>
-        </Row>
-      <Row>
+       </Row>
+       <br></br>
+  <Row>
   <Col md>
   <Form.Group controlId="home_region">
-  <Form.Label>Regione:</Form.Label>
+  <Form.Label as="h5">Regione:*</Form.Label>
   <Regions></Regions>
           </Form.Group>
           </Col>
           <br></br>
           <Col md>      
       <Form.Group as={Col} controlId="formGridFuorisede">
-        <Form.Label>Sei fuorisede?</Form.Label>
+        <Form.Label as="h5">Sei fuorisede?*</Form.Label>
       </Form.Group>
       <Form>
     {['radio'].map((type) => (
@@ -353,29 +354,30 @@ class Recensisci extends React.Component {
    
       <Col md>
   <Form.Group controlId="formGridStudy_town">
-        <Form.Label>Dove studi?</Form.Label>
+        <Form.Label as="h5">Dove studi?*</Form.Label>
         <Form.Control placeholder="Comune"/>
       </Form.Group>     
       </Col> 
       </Row>
+      <br></br>
       <Row> 
     <Col md>
     <Form.Group  controlId="formGridResidence">
-      <Form.Label>Comune:</Form.Label>
+      <Form.Label as="h5">Comune:*</Form.Label>
       <Form.Control />
     </Form.Group>
     </Col>
            
       <Col md>
   <Form.Group  controlId="study_province">
-  <Form.Label>Provincia:</Form.Label>
+  <Form.Label as="h5">Provincia:*</Form.Label>
         <Province></Province>
           </Form.Group>
           </Col>
 
           <Col md>
   <Form.Group as={Col} controlId="study_region">
-  <Form.Label>Regione:</Form.Label>
+  <Form.Label as="h5">Regione:*</Form.Label>
         <Regions></Regions>
           </Form.Group>
           </Col>
@@ -386,7 +388,7 @@ class Recensisci extends React.Component {
          <Row> 
          <Col md>      
       <Form.Group as={Col} controlId="formGriddifficulties_transferring">
-        <Form.Label>Hai trovato difficoltà nel trasferimento?</Form.Label>
+        <Form.Label as="h5">Hai trovato difficoltà nel trasferimento?*</Form.Label>
       </Form.Group>
       <Form>
     {['radio'].map((type) => (
@@ -411,7 +413,7 @@ class Recensisci extends React.Component {
   </Col>
   <Col md>
     <Form.Group  controlId="formGriddifficulties_list">
-      <Form.Label>Quali sono state?</Form.Label>
+      <Form.Label as="h5">Quali sono state?*</Form.Label>
       <Form.Control as="textarea" />
     </Form.Group>
     </Col>
@@ -422,7 +424,7 @@ class Recensisci extends React.Component {
     <Row >
     <Col md>
       <Form.Group as={Col} controlId="formGridstudytype">
-        <Form.Label>Che tipo di studi stai facendo?</Form.Label>
+        <Form.Label as="h5">Che tipo di studi stai facendo?*</Form.Label>
       </Form.Group>
       <Form>
     {['radio'].map((type) => (
@@ -484,14 +486,15 @@ class Recensisci extends React.Component {
     <br></br>
     <Row>
     <Col md>   
-    <Form.Group className="mb-3" controlId="select_uni">
-    <Form.Label>Che università frequenti?</Form.Label>
+    <Form.Group className="mb-3" controlId="formGridselect_uni">
+    <Form.Label as="h5">Che università frequenti?*</Form.Label>
     <Universities></Universities>
   </Form.Group>
   </Col>
     <Col md>
       <Form.Group as={Col} controlId="formGridother_uni">
-        <Form.Label>Tipo di università?</Form.Label>
+        <Form.Label as="h5">Tipo di università?*</Form.Label>
+        <Form.Label >(in situazioni non di emergenza)*</Form.Label>
       </Form.Group>
       <Form>
     {['radio'].map((type) => (
@@ -518,20 +521,20 @@ class Recensisci extends React.Component {
     <Row>
     <Col md>  
   <Form.Group as={Col} controlId="formGriddepartment">
-        <Form.Label>Di quale dipartimento fai parte</Form.Label>
+        <Form.Label as="h5">Di quale dipartimento fai parte?*</Form.Label>
         <Form.Control />
       </Form.Group>
       </Col>
       <Col md>
       <Form.Group as={Col} controlId="formGriddegree_course">
-        <Form.Label>Che corso di laurea frequenti?</Form.Label>
+        <Form.Label as="h5">Che corso di laurea frequenti?*</Form.Label>
         <Form.Control />
       </Form.Group>
       </Col>
       </Row>
       <br></br>
       <Form.Group className="mb-3" controlId="formGridsubject_area">
-      <Form.Label>Quali sono le discipline principali del tuo corso?</Form.Label>
+      <Form.Label as="h5">Quali sono le discipline principali del tuo corso?*</Form.Label>
       <Form.Control as="textarea" placeholder="Elenca le discipline principali separate da un virgola 
       (ES: scienze ambientali,matematica,biotecnologie agricole,robotica,game developing,sociologia.....)"/>
     </Form.Group>
@@ -541,12 +544,19 @@ class Recensisci extends React.Component {
     <Row>
     <Col md>
     <Form.Group controlId="formGridenrolment_year">
-        <Form.Label>In che anno ti sei iscritto?</Form.Label>
-        <Form.Control />
+        <Form.Label as="h5">In che anno ti sei iscritto?*</Form.Label>
+        <Form.Select aria-label="Default select example">
+      <option>Seleziona</option>
+      <option  value="1">1</option>
+      <option  value="2">2</option>
+      <option  value="3">3</option>
+      <option  value="4">4</option>
+      <option  value="5">5</option>
+  </Form.Select>
       </Form.Group>
       </Col>
       <Form.Group as={Col} controlId="formGridend_year">
-        <Form.Label>In che anno prevedi di terminare l’università?</Form.Label>
+        <Form.Label as="h5">In che anno prevedi di terminare l’università?*</Form.Label>
         <Form.Control />
       </Form.Group>
       </Row>
@@ -554,7 +564,7 @@ class Recensisci extends React.Component {
       <Row>
       <Col>
       <Form.Group as={Col} controlId="formGridenrolment_type">
-        <Form.Label>Tipologia d'iscrizione:</Form.Label>
+        <Form.Label as="h5">Tipologia d'iscrizione:*</Form.Label>
       </Form.Group>
       <Form>
     {['radio'].map((type) => (
@@ -579,7 +589,7 @@ class Recensisci extends React.Component {
   </Col>
   <Col>
   <Form.Group controlId="formGriddegree_year">
-        <Form.Label>Che anno frequenti?</Form.Label>
+        <Form.Label as="h5">Che anno frequenti?*</Form.Label>
         <Form.Control />
   </Form.Group>
   </Col>
@@ -588,13 +598,13 @@ class Recensisci extends React.Component {
     <Row>
     <Col md>
   <Form.Group controlId="formGridaverage_grade">
-        <Form.Label>Che media hai?</Form.Label>
+        <Form.Label as="h5">Che media hai?*</Form.Label>
         <Form.Control as="textarea" placeholder="Metti 0 se non hai ancora una media, Scrivi 31, per mettere 30 E LODE"/>
   </Form.Group>
       </Col>
       <Col md>
       <Form.Group as={Col} controlId="formGridexams_not_done">
-        <Form.Label>Hai degli esami indietro?</Form.Label>
+        <Form.Label as="h5">Hai degli esami indietro?*</Form.Label>
         </Form.Group>
       <Form>
     {['radio'].map((type) => (
@@ -619,31 +629,31 @@ class Recensisci extends React.Component {
   </Col>
   <Col md>
   <Form.Group as={Col} controlId="formGridnumb_exams_not_done">
-        <Form.Label>Quanti sono?</Form.Label>
+        <Form.Label as="h5">Quanti sono?*</Form.Label>
         <Form.Control />
   </Form.Group>
   </Col>
   </Row>
   <br></br>
   <Form.Group as={Col} controlId="formGriddifficult_aspect">
-        <Form.Label>Qual'è  l'ASPETTO del tuo corso che ti ha messo più in difficoltà?</Form.Label>
+        <Form.Label as="h5">Qual'è  l'ASPETTO del tuo corso che ti ha messo più in difficoltà?*</Form.Label>
         <Form.Control as="textarea" placeholder="Es. i professori, l'ambiente, le materie, l organizzazione della didattica..."/>
   </Form.Group>
 
   <Form.Group as={Col} controlId="formGrideasy_exams">
-        <Form.Label>Quali sono stati, finora,  gli ESAMI che hai trovato più FACILI?</Form.Label>
+        <Form.Label as="h5">Quali sono stati, finora,  gli ESAMI che hai trovato più FACILI?*</Form.Label>
         <Form.Control as="textarea" placeholder="Scrivi NO se non hai ancora dato nessun esame"/>
   </Form.Group>
 
   <Form.Group as={Col} controlId="formGridhard_exams">
-        <Form.Label>Quali sono stati, finora, gli ESAMI che hai trovato più DIFFICILI?</Form.Label>
+        <Form.Label as="h5">Quali sono stati, finora, gli ESAMI che hai trovato più DIFFICILI?*</Form.Label>
         <Form.Control as="textarea" placeholder="Scrivi NO se non hai ancora dato nessun esame"/>
   </Form.Group>
 <br></br>
   <Row>
   <Col md>
       <Form.Group as={Col} controlId="formGridredo_choice">
-        <Form.Label>Se potessi tornare indietro, sceglieresti di nuovo questo corso di laurea?</Form.Label>
+        <Form.Label as="h5">Se potessi tornare indietro, sceglieresti di nuovo questo corso di laurea?*</Form.Label>
       </Form.Group>
       <Form>
     {['radio'].map((type) => (
@@ -668,19 +678,19 @@ class Recensisci extends React.Component {
   </Col>
   <Col md>
   <Form.Group as={Col} controlId="formGridreason_redo_choice">
-        <Form.Label>Perchè?</Form.Label>
+        <Form.Label as="h5">Perchè?*</Form.Label>
         <Form.Control/>
   </Form.Group>
       </Col>
       </Row>
       <Row>
   <Form.Group as={Col} controlId="formGriddecision_choice">
-        <Form.Label>Cosa/Chi ti ha spinto a fare questa scelta?</Form.Label>
+        <Form.Label as="h5">Cosa/Chi ti ha spinto a fare questa scelta?*</Form.Label>
         <Form.Control/>
   </Form.Group>
 
   <Form.Group as={Col} controlId="formGridexpectations">
-        <Form.Label>Cosa ti aspettavi da questo corso di studi?</Form.Label>
+        <Form.Label as="h5">Cosa ti aspettavi da questo corso di studi?*</Form.Label>
         <Form.Control />
   </Form.Group>
   </Row>
@@ -688,7 +698,7 @@ class Recensisci extends React.Component {
   <Row >
   <Col md>
       <Form.Group as={Col} controlId="formGridexpectations_met">
-        <Form.Label>Finora, sono state soddisfatte le tue aspettative? </Form.Label>
+        <Form.Label as="h5">Finora, sono state soddisfatte le tue aspettative? *</Form.Label>
       </Form.Group>
       <Form>
     {['radio'].map((type) => (
@@ -713,7 +723,7 @@ class Recensisci extends React.Component {
   </Col>
   <Col md> 
   <Form.Group as={Col} controlId="formGridexpectations_no">
-        <Form.Label>Come mai?</Form.Label>
+        <Form.Label as="h5">Come mai?*</Form.Label>
         <Form.Control />
   </Form.Group>
   </Col>
@@ -722,7 +732,7 @@ class Recensisci extends React.Component {
   <Row >
   <Col md>
       <Form.Group as={Col} controlId="formGridadvice">
-        <Form.Label>Consiglieresti questa laurea?</Form.Label>
+        <Form.Label as="h5">Consiglieresti questa laurea?*</Form.Label>
       </Form.Group>
       <Form>
     {['radio'].map((type) => (
@@ -746,12 +756,12 @@ class Recensisci extends React.Component {
   </Form>
   </Col>
   <Form.Group as={Col} controlId="formGridadvice_why">
-        <Form.Label>Perchè?</Form.Label>
+        <Form.Label as="h5">Perchè?*</Form.Label>
         <Form.Control />
   </Form.Group> 
 
   <Form.Group as={Col} controlId="formGridadvice_who">
-        <Form.Label>A chi la consiglieresti??</Form.Label>
+        <Form.Label as="h5">A chi la consiglieresti??*</Form.Label>
         <Form.Control />
   </Form.Group>
     </Row>    
@@ -761,8 +771,7 @@ class Recensisci extends React.Component {
   <Row>
     <Col md>
     <Form.Group as={Col} controlId="formGridabroad_experience">
-        <Form.Label>Hai fatto un’esperienza all’estero durante la tua carriera univeristaria?</Form.Label>
-        <Form.Control />
+        <Form.Label as="h5">Hai fatto un’esperienza all’estero durante la tua carriera univeristaria?*</Form.Label>
       </Form.Group>
       <Form>
     {['radio'].map((type) => (
@@ -786,33 +795,33 @@ class Recensisci extends React.Component {
   </Form>
   </Col>
   <Col md>
-  <Form.Group className="mb-3" controlId="erasmus_type">
-  <Form.Label>Che tipo di esperienza?</Form.Label>
+  <Form.Group className="mb-3" controlId="formGriderasmus_type">
+  <Form.Label as="h5">Che tipo di esperienza?*</Form.Label>
   <Form.Control />
         </Form.Group>
       </Col>
       </Row>
       <Row>
       <Col md>
-  <Form.Group className="mb-3" controlId="foreign_country">
-  <Form.Label>In che stato estero hai svolto la tua esperienza?</Form.Label>
+  <Form.Group className="mb-3" controlId="formGridforeign_country">
+  <Form.Label as="h5">In che stato estero hai svolto la tua esperienza?*</Form.Label>
   <Form.Control />
         </Form.Group>
       </Col>
       <Col md>
-  <Form.Group className="mb-3" controlId="foreign_city">
-  <Form.Label>In che città estera hai svolto la tua esperienza?</Form.Label>
+  <Form.Group className="mb-3" controlId="formGridforeign_city">
+  <Form.Label as="h5">In che città estera hai svolto la tua esperienza?*</Form.Label>
   <Form.Control />
         </Form.Group>
       </Col>
       </Row>
-    <br></br>
+  <br></br>
   <Card.Title as="h4" style={color}>Cambi di corso</Card.Title>
   <br></br>
   <Row>
-    <Col md>
+  <Col md>
     <Form.Group as={Col} controlId="formGridchange_degree">
-        <Form.Label>Hai mai cambiato corso durante questa laurea?</Form.Label>
+        <Form.Label as="h5">Hai mai cambiato corso durante questa laurea?*</Form.Label>
       </Form.Group>
       <Form>
     {['radio'].map((type) => (
@@ -837,50 +846,175 @@ class Recensisci extends React.Component {
   </Col>
   <Col md>
   <Form.Group className="mb-3" controlId="change_year">
-  <Form.Label>In che città estera hai svolto la tua esperienza?</Form.Label>
+  <Form.Label as="h5">A che anno?*</Form.Label>
   <Form.Control />
         </Form.Group>
       </Col>
-  </Row>
-  <Row>
       <Col md>
   <Form.Group className="mb-3" controlId="prev_change_uni">
-  <Form.Label>Qual'era la tua precedente UNIVERSITA'?</Form.Label>
+  <Form.Label as="h5">Qual'era la tua precedente UNIVERSITA'?*</Form.Label>
   <Universities></Universities>
         </Form.Group>
       </Col>
+      </Row>
+      <Row>
       <Col md>
   <Form.Group className="mb-3" controlId="select_triennial">
-  <Form.Label>Che università hai frequentato alla triennale?</Form.Label>
+  <Form.Label as="h5">Che università hai frequentato alla triennale?*</Form.Label>
   <Universities></Universities>
         </Form.Group>
 </Col>
-</Row>
-<Row>
 <Col md>
   <Form.Group className="mb-3" controlId="prev_change_department">
-  <Form.Label>Qual'era la tua precedente FACOLTA'?</Form.Label>
-  <Form.Control />
-        </Form.Group>
-      </Col>
-      <Col md>
-  <Form.Group className="mb-3" controlId="prev_change_degree_course">
-  <Form.Label>Qual'era il tuo precedente CORSO DI LAUREA?</Form.Label>
+  <Form.Label as="h5">Qual'era la tua precedente FACOLTA'?*</Form.Label>
   <Form.Control />
         </Form.Group>
       </Col>
       </Row>
-
+      <Row>
+      <Col md>
+  <Form.Group className="mb-3" controlId="prev_change_degree_course">
+  <Form.Label as="h5">Qual'era il tuo precedente CORSO DI LAUREA?*</Form.Label>
+  <Form.Control />
+        </Form.Group>
+      </Col>
       <Col md>
   <Form.Group className="mb-3" controlId="change_why">
-  <Form.Label>Perchè hai cambiato?</Form.Label>
+  <Form.Label as="h5">Perchè hai cambiato?*</Form.Label>
   <Form.Control as="textarea"/>
         </Form.Group>
       </Col>
+      </Row>
+      <br></br>
+  <Card.Title as="h4" style={color}>Info Laurea triennale</Card.Title>
+  <br></br>
      <Row>
+     <Col md>
+    <Form.Group as={Col} controlId="formGridtriennial_university_type">
+        <Form.Label as="h5">Che tipo di università era?*</Form.Label>
+      </Form.Group>
+      <Form>
+    {['radio'].map((type) => (
+      <div key={`inline-${type}`} className="mb-3">
+        <Form.Check
+          inline
+          label="SI"
+          name="triennial_university_type"
+          type={type}
+          id={`inline-${type}-1`}
+        />
+        <Form.Check
+          inline
+          label="NO"
+          name="triennial_university_type"
+          type={type}
+          id={`inline-${type}-2`}
+        />
+      </div>
+    ))}
+  </Form>
+  </Col>
+  <Col md>
+  <Form.Group className="mb-3" controlId="triennial_department">
+  <Form.Label as="h5">Che facoltà hai frequentato?*</Form.Label>
+  <Form.Control />
+      </Form.Group>
+      </Col>
+      </Row>
+      <Row>
+  <Col md>
+  <Form.Group className="mb-3" controlId="formGridtriennial_course_degree">
+  <Form.Label as="h5">Che corso di laurea hai fatto?*</Form.Label>
+  <Form.Control />
+        </Form.Group>
+      </Col>
+    <Col md>
+  <Form.Group className="mb-3" controlId="formGridtriennial_enrolment_year">
+  <Form.Label as="h5">In che anno ti eri iscritto?*</Form.Label>
+  <Form.Control />
+        </Form.Group>
+      </Col>
+      </Row>
+      <Col md>
+  <Form.Group className="mb-3" controlId="formGridtriennial_subject_area">
+      <Form.Label as="h5">Quali erano le discipline principali del tuo VECCHIO corso?*</Form.Label>
+      <Form.Control as="textarea" placeholder="Elenca le discipline principali separate da un virgola 
+      (ES: scienze ambientali,matematica,biotecnologie agricole,robotica,game developing,sociologia.....)"/>
+    </Form.Group>
+    </Col>
+      <Row>
+      <Col md>
+  <Form.Group className="mb-3" controlId="formGridtriennial_end_year">
+  <Form.Label as="h5">In che anno ti sei laureato?*</Form.Label>
+  <Form.Control />
+        </Form.Group>
+      </Col>
+     <Col md>
+    <Form.Group as={Col} controlId="formGridtriennial_end_year">
+        <Form.Label as="h5">Come ti eri iscritto?*</Form.Label>
+      </Form.Group>
+      <Form>
+    {['radio'].map((type) => (
+      <div key={`inline-${type}`} className="mb-3">
+        <Form.Check
+          inline
+          label="PART TIME"
+          name="triennial_end_year"
+          type={type}
+          id={`inline-${type}-1`}
+        />
+        <Form.Check
+          inline
+          label="FULL TIME"
+          name="triennial_end_year"
+          type={type}
+          id={`inline-${type}-2`}
+        />
+      </div>
+    ))}
+  </Form>
+  </Col>
+  </Row>
+  <Row>
+    <Col md>
+    <Form.Group as={Col} controlId="formGridchoice_related_studies">
+        <Form.Label as="h5">Hai scelto una magistrale inerente ai tuoi studi passati?*</Form.Label>
+      </Form.Group>
+      <Form>
+    {['radio'].map((type) => (
+      <div key={`inline-${type}`} className="mb-3">
+        <Form.Check
+          inline
+          label="SI"
+          name="choice_related_studies"
+          type={type}
+          id={`inline-${type}-1`}
+        />
+        <Form.Check
+          inline
+          label="NO"
+          name="choice_related_studies"
+          type={type}
+          id={`inline-${type}-2`}
+        />
+      </div>
+    ))}
+  </Form>
+  </Col>
+  <Col md>
+  <Form.Group className="mb-3" controlId="formGridtriennial_grade">
+      <Form.Label as="h5">Con che voto di laurea sei uscito?*</Form.Label>
+      <Form.Control placeholder="Metti 111 se sei uscito con 110 E LODE"/>
+    </Form.Group>
+    </Col>
+    </Row>
+  <br></br>
+    <Card.Title as="h4" style={color}>Info Scuole Superiori</Card.Title>
+  <br></br>
+  <Row>
       <Col md>
   <Form.Group className="mb-3" controlId="select_highschool">
-  <Form.Label>Che scuola hai fatto alle superiori?</Form.Label>
+  <Form.Label as="h5">Che scuola hai fatto alle superiori?*</Form.Label>
   <Form.Select aria-label="Default select example">
     <option>Seleziona Scuola Superiore</option>
     <option value="Liceo Linguistico"> Liceo linguistico</option>
@@ -903,10 +1037,280 @@ class Recensisci extends React.Component {
                           </Form.Select>
                           </Form.Group>
                           </Col>
-                          
-                            
+  <Col md>
+  <Form.Group className="mb-3" controlId="formGridmain_subject">
+  <Form.Label as="h5">Quali erano le materie principali della tua scuola?*</Form.Label>
+  <Form.Control />
+        </Form.Group>
+      </Col>                      
+      </Row>
+      <Row>
+      <Col md>
+  <Form.Group className="mb-3" controlId="formGridfavorite_subject">
+  <Form.Label as="h5">Qual era la tua materia preferita?*</Form.Label>
+  <Form.Control />
+        </Form.Group>
+      </Col>
+      <Col md>
+      <Form.Group className="mb-3" controlId="formGridbaccalaureate">
+      <Form.Label as="h5">Che voto hai preso alla maturita?* </Form.Label>
+      <Form.Control placeholder="Metti 111 se sei uscito con 110 E LODE"/>
+    </Form.Group>
+    </Col>
+      <Col md>
+    <Form.Group as={Col} controlId="formGridchoice_related_studies">
+        <Form.Label as="h5">Hai scelto un  corso di laurea inerente agli studi delle superiori?*</Form.Label>
+      </Form.Group>
+      <Form>
+    {['radio'].map((type) => (
+      <div key={`inline-${type}`} className="mb-3">
+        <Form.Check
+          inline
+          label="SI"
+          name="choice_related_studies"
+          type={type}
+          id={`inline-${type}-1`}
+        />
+        <Form.Check
+          inline
+          label="NO"
+          name="choice_related_studies"
+          type={type}
+          id={`inline-${type}-2`}
+        />
+      </div>
+    ))}
+  </Form>
+  </Col>
+  </Row>
+  <br></br>
+    <Card.Title as="h4" style={color}>Info Esperienze Lavorative</Card.Title>
+  <br></br>
+  <Row>
+  <Col md>
+    <Form.Group as={Col} controlId="formGridwork_experience">
+        <Form.Label as="h5">Hai avuto esperienze lavorative durante gli studi?*</Form.Label>
+      </Form.Group>
+      <Form>
+    {['radio'].map((type) => (
+      <div key={`inline-${type}`} className="mb-3">
+        <Form.Check
+          inline
+          label="SI"
+          name="work_experience"
+          type={type}
+          id={`inline-${type}-1`}
+        />
+        <Form.Check
+          inline
+          label="NO"
+          name="work_experience"
+          type={type}
+          id={`inline-${type}-2`}
+        />
+      </div>
+    ))}
+  </Form>
+  </Col>
+      <Col md>
+  <Form.Group className="mb-3" controlId="formGridwork_experience_type">
+  <Form.Label as="h5">Che tipo di esperienza/e lavorativa/e?*</Form.Label>
+  <Form.Control as="textarea"/>
+        </Form.Group>
+      </Col>
+      </Row>
+      <Row>
+      <Col md>
+    <Form.Group as={Col} controlId="formGridwork_related_studies">
+        <Form.Label as="h5">E' stata inerente al corso di studi?*</Form.Label>
+      </Form.Group>
+      <Form>
+    {['radio'].map((type) => (
+      <div key={`inline-${type}`} className="mb-3">
+        <Form.Check
+          inline
+          label="SI"
+          name="work_related_studies"
+          type={type}
+          id={`inline-${type}-1`}
+        />
+        <Form.Check
+          inline
+          label="NO"
+          name="work_related_studies"
+          type={type}
+          id={`inline-${type}-2`}
+        />
+      </div>
+    ))}
+  </Form>
+  </Col>
+  <Col md>
+  <Form.Group className="mb-3" controlId="formGridyear_start_work">
+  <Form.Label as="h5">In che ANNO di LAUREA hai iniziato a lavorare?*</Form.Label>
+  <Form.Control />
+        </Form.Group>
+      </Col>
+      </Row>
+  <Col  md="auto">
+  <Card className="text-center">
+  <Card.Header  as="h4"  style={color}>Assegna una valutazione da 1 a 10 alle seguenti caratteristiche 
+  riguardanti la tua università: </Card.Header>
+  <Form.Label as="h5">METTI 0 SE, in base alla tua esperienza, NON PUOI VALUTARLO.</Form.Label>
+  </Card>
+  </Col>
+  <Row>
+  <Col md>
+  <Form.Group className="mb-3" controlId="formGriddidactic_quality">
+  <Form.Label as="h5">Qualità dell'offerta formativa:*</Form.Label>
+  <Form.Select aria-label="Default select example">
+      <option>Seleziona</option>
+      <option  value="0">0</option>
+      <option  value="1">1</option>
+      <option  value="2">2</option>
+      <option  value="3">3</option>
+      <option  value="4">4</option>
+      <option  value="5">5</option>
+      <option  value="6">6</option>
+      <option  value="7">7</option>
+      <option  value="8">8</option>
+      <option  value="9">9</option>
+      <option  value="10">10</option>
+  </Form.Select>
+        </Form.Group>
+      </Col>
+      <Col md>
+  <Form.Group className="mb-3" controlId="formGridteaching_quality">
+  <Form.Label as="h5">Qualità dell’insegnamento dei professori:*</Form.Label>
+  <Form.Select aria-label="Default select example">
+      <option>Seleziona</option>
+      <option  value="0">0</option>
+      <option  value="1">1</option>
+      <option  value="2">2</option>
+      <option  value="3">3</option>
+      <option  value="4">4</option>
+      <option  value="5">5</option>
+      <option  value="6">6</option>
+      <option  value="7">7</option>
+      <option  value="8">8</option>
+      <option  value="9">9</option>
+      <option  value="10">10</option>
+  </Form.Select>
+        </Form.Group>
+      </Col>
+      </Row>
+      <Row>
+      <Col md>
+  <Form.Group className="mb-3" controlId="formGridexams_difficulties">
+  <Form.Label as="h5">Difficoltà degli esami:*</Form.Label>
+  <Form.Select aria-label="Default select example">
+      <option>Seleziona</option>
+      <option  value="0">0</option>
+      <option  value="1">1</option>
+      <option  value="2">2</option>
+      <option  value="3">3</option>
+      <option  value="4">4</option>
+      <option  value="5">5</option>
+      <option  value="6">6</option>
+      <option  value="7">7</option>
+      <option  value="8">8</option>
+      <option  value="9">9</option>
+      <option  value="10">10</option>
+  </Form.Select>
+        </Form.Group>
+      </Col>
+      <Col md>
+  <Form.Group className="mb-3" controlId="formGridsubjects_difficulties">
+  <Form.Label as="h5">Difficoltà delle materie:*</Form.Label>
+  <Form.Select aria-label="Default select example">
+      <option>Seleziona</option>
+      <option  value="0">0</option>
+      <option  value="1">1</option>
+      <option  value="2">2</option>
+      <option  value="3">3</option>
+      <option  value="4">4</option>
+      <option  value="5">5</option>
+      <option  value="6">6</option>
+      <option  value="7">7</option>
+      <option  value="8">8</option>
+      <option  value="9">9</option>
+      <option  value="10">10</option>
+  </Form.Select>
+        </Form.Group>
+      </Col>
+      </Row>
+      <Row>
+      <Col md>
+  <Form.Group className="mb-3" controlId="formGridenvironment_quality">
+  <Form.Label as="h5">Qualità degli spazi di ateneo:*</Form.Label>
+  <Form.Select aria-label="Default select example">
+      <option>Seleziona</option>
+      <option  value="0">0</option>
+      <option  value="1">1</option>
+      <option  value="2">2</option>
+      <option  value="3">3</option>
+      <option  value="4">4</option>
+      <option  value="5">5</option>
+      <option  value="6">6</option>
+      <option  value="7">7</option>
+      <option  value="8">8</option>
+      <option  value="9">9</option>
+      <option  value="10">10</option>
+  </Form.Select>
+        </Form.Group>
+      </Col>
+      <Col md>
+  <Form.Group className="mb-3" controlId="formGridstudents_relationship">
+  <Form.Label as="h5">Qualità del rapporto con i colleghi:*</Form.Label>
+  <Form.Select aria-label="Default select example">
+      <option>Seleziona</option>
+      <option  value="0">0</option>
+      <option  value="1">1</option>
+      <option  value="2">2</option>
+      <option  value="3">3</option>
+      <option  value="4">4</option>
+      <option  value="5">5</option>
+      <option  value="6">6</option>
+      <option  value="7">7</option>
+      <option  value="8">8</option>
+      <option  value="9">9</option>
+      <option  value="10">10</option>
+  </Form.Select>
+        </Form.Group>
+      </Col>
+      </Row>
+      <Col md>
+  <Form.Group className="mb-3" controlId="formGridlaboratories">
+  <Form.Label as="h5">Quanto sono presenti attività pratiche progettuali o di laboratorio?*</Form.Label>
+  <Form.Control />
+        </Form.Group>
+      </Col>
 <Col md>
-  <Form.Label>Voto recensione</Form.Label>
+<br></br>
+    <Card.Title as="h4" style={color}>Altre info</Card.Title>
+  <br></br>
+  <Row>
+  <Col md>
+  <Form.Group className="mb-3" controlId="formGridhobby">
+  <Form.Label as="h5">Quali sono i tuoi hobby?*</Form.Label>
+  <Form.Control as="textarea" placeholder="(separa i vari hobby con una virgola"/>
+        </Form.Group>
+      </Col>
+      <Col md>
+  <Form.Group className="mb-3" controlId="formGriddream_job">
+  <Form.Label as="h5">Qual è il lavoro dei tuoi sogni?*</Form.Label>
+  <Form.Control />
+        </Form.Group>
+      </Col>
+      <Col md>
+  <Form.Group className="mb-3" controlId="formGridreview">
+  <Form.Label as="h5">Lascia una recensione sul tuo corso laurea:*</Form.Label>
+  <Form.Control as="textarea" placeholder="(raccontaci di più su questo corso e sulla tua personale esperienza.)"/>
+        </Form.Group>
+      </Col>
+      </Row>
+
+  <Form.Label as="h5">Voto recensione*</Form.Label>
   <Form.Select aria-label="Default select example">
       <option>Stars</option>
       <option  value="1">⭐</option>
@@ -916,7 +1320,6 @@ class Recensisci extends React.Component {
       <option  value="5">⭐⭐⭐⭐⭐</option>
   </Form.Select>
   </Col>
-      </Row>
   <Button variant="primary" type="submit">
       Submit
     </Button>
