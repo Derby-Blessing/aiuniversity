@@ -295,33 +295,37 @@ class Recensisci extends React.Component {
     <Row>
   <Col>
   <br></br>
-  <Card.Header as="h3" style={color}>Informazioni Geografiche</Card.Header>
+  <Card.Title as="h4" style={color}>Informazioni Geografiche</Card.Title>
   <br></br>
     <Row >
     <Col md>
     <Form.Group  controlId="formGridResidence">
       <Form.Label>Da dove vieni?</Form.Label>
-      <Form.Control placeholder="luogo d'origine/residenza prima dell'università"/>
+      <Form.Control />
     </Form.Group>
     </Col>
-
+    <Col md>
+    <Form.Group  controlId="formGridResidence">
+      <Form.Label>Comune:</Form.Label>
+      <Form.Control />
+    </Form.Group>
+    </Col>
     <Col md>
   <Form.Group  controlId="home_province">
     <Form.Label>Provincia:</Form.Label>
       <Province></Province>
           </Form.Group>
           </Col>
-          
-
+        </Row>
+      <Row>
   <Col md>
   <Form.Group controlId="home_region">
   <Form.Label>Regione:</Form.Label>
   <Regions></Regions>
           </Form.Group>
           </Col>
-          </Row>
           <br></br>
-          <Row>      
+          <Col md>      
       <Form.Group as={Col} controlId="formGridFuorisede">
         <Form.Label>Sei fuorisede?</Form.Label>
       </Form.Group>
@@ -345,23 +349,29 @@ class Recensisci extends React.Component {
       </div>
     ))}
   </Form>
-  </Row>
-
-  <Row  >  
+  </Col>
+   
       <Col md>
   <Form.Group controlId="formGridStudy_town">
         <Form.Label>Dove studi?</Form.Label>
         <Form.Control placeholder="Comune"/>
       </Form.Group>     
-      </Col>             
+      </Col> 
+      </Row>
+      <Row> 
+    <Col md>
+    <Form.Group  controlId="formGridResidence">
+      <Form.Label>Comune:</Form.Label>
+      <Form.Control />
+    </Form.Group>
+    </Col>
+           
       <Col md>
   <Form.Group  controlId="study_province">
   <Form.Label>Provincia:</Form.Label>
         <Province></Province>
           </Form.Group>
           </Col>
-    
-
 
           <Col md>
   <Form.Group as={Col} controlId="study_region">
@@ -372,12 +382,45 @@ class Recensisci extends React.Component {
           </Row>
          </Col>
          </Row> 
-
-
          <br></br>
-  <Card.Header as="h3" style={color}>Informazioni sui tuoi studi</Card.Header>
+         <Row> 
+         <Col md>      
+      <Form.Group as={Col} controlId="formGriddifficulties_transferring">
+        <Form.Label>Hai trovato difficoltà nel trasferimento?</Form.Label>
+      </Form.Group>
+      <Form>
+    {['radio'].map((type) => (
+      <div key={`inline-${type}`} className="mb-3">
+        <Form.Check
+          inline
+          label="Sì"
+          name="group1"
+          type={type}
+          id={`inline-${type}-1`}
+        />
+        <Form.Check
+          inline
+          label="No"
+          name="group1"
+          type={type}
+          id={`inline-${type}-2`}
+        />
+      </div>
+    ))}
+  </Form>
+  </Col>
+  <Col md>
+    <Form.Group  controlId="formGriddifficulties_list">
+      <Form.Label>Quali sono state?</Form.Label>
+      <Form.Control as="textarea" />
+    </Form.Group>
+    </Col>
+    </Row>
+         <br></br>
+  <Card.Title as="h4" style={color}>Informazioni sui tuoi studi</Card.Title>
   <br></br>
-    <Row className="mb-3">
+    <Row >
+    <Col md>
       <Form.Group as={Col} controlId="formGridstudytype">
         <Form.Label>Che tipo di studi stai facendo?</Form.Label>
       </Form.Group>
@@ -421,33 +464,34 @@ class Recensisci extends React.Component {
         />
         <Form.Check
           inline
-          label="scuolaspecialistica"
+          label="Scuolaspecialistica"
           name="study_type"
           type={type}
           id={`inline-${type}-2`}
         />
         <Form.Check
           inline
-          label="altro"
+          label="Altro"
           name="study_type"
           type={type}
           id={`inline-${type}-2`}
         />
       </div>
     ))}
-  </Form>
-  </Row>
-      
-  <Form.Group className="mb-3" controlId="select_uni">
-  <Form.Label>Che università frequenti?</Form.Label>
-  <Universities></Universities>
-
-          </Form.Group>
-
-    <Row className="mb-3">
+    </Form>
+    </Col>
+    </Row>
+    <br></br>
+    <Row>
+    <Col md>   
+    <Form.Group className="mb-3" controlId="select_uni">
+    <Form.Label>Che università frequenti?</Form.Label>
+    <Universities></Universities>
+  </Form.Group>
+  </Col>
+    <Col md>
       <Form.Group as={Col} controlId="formGridother_uni">
         <Form.Label>Tipo di università?</Form.Label>
-        <Form.Control type="text" placeholder="Seleziona Regionein situazioni non di emergenza"/>
       </Form.Group>
       <Form>
     {['radio'].map((type) => (
@@ -467,41 +511,50 @@ class Recensisci extends React.Component {
           id={`inline-${type}-2`}
         />
       </div>
-    ))}
-  </Form>
-  </Row>
-
+      ))}
+    </Form>
+    </Col>
+    </Row>
+    <Row>
+    <Col md>  
   <Form.Group as={Col} controlId="formGriddepartment">
         <Form.Label>Di quale dipartimento fai parte</Form.Label>
         <Form.Control />
       </Form.Group>
-
-  <Row className="mb-3">
+      </Col>
+      <Col md>
       <Form.Group as={Col} controlId="formGriddegree_course">
         <Form.Label>Che corso di laurea frequenti?</Form.Label>
         <Form.Control />
       </Form.Group>
-
+      </Col>
+      </Row>
+      <br></br>
       <Form.Group className="mb-3" controlId="formGridsubject_area">
       <Form.Label>Quali sono le discipline principali del tuo corso?</Form.Label>
       <Form.Control as="textarea" placeholder="Elenca le discipline principali separate da un virgola 
       (ES: scienze ambientali,matematica,biotecnologie agricole,robotica,game developing,sociologia.....)"/>
     </Form.Group>
-
-    <Form.Group as={Col} controlId="formGridenrolment_year">
+    <br></br>
+    <Card.Title as="h4" style={color}>Info sulla tua carriera universitaria</Card.Title>
+  <br></br>
+    <Row>
+    <Col md>
+    <Form.Group controlId="formGridenrolment_year">
         <Form.Label>In che anno ti sei iscritto?</Form.Label>
         <Form.Control />
       </Form.Group>
-    
+      </Col>
       <Form.Group as={Col} controlId="formGridend_year">
         <Form.Label>In che anno prevedi di terminare l’università?</Form.Label>
         <Form.Control />
       </Form.Group>
       </Row>
-      <Row className="mb-3">
+      <br></br>
+      <Row>
+      <Col>
       <Form.Group as={Col} controlId="formGridenrolment_type">
         <Form.Label>Tipologia d'iscrizione:</Form.Label>
-        <Form.Control type="text" placeholder="Seleziona Regione in situazioni non di emergenza"/>
       </Form.Group>
       <Form>
     {['radio'].map((type) => (
@@ -523,23 +576,26 @@ class Recensisci extends React.Component {
       </div>
     ))}
   </Form>
-  </Row>
-  
-  <Form.Group as={Col} controlId="formGriddegree_year">
+  </Col>
+  <Col>
+  <Form.Group controlId="formGriddegree_year">
         <Form.Label>Che anno frequenti?</Form.Label>
         <Form.Control />
   </Form.Group>
-
-  <Form.Group as={Col} controlId="formGridaverage_grade">
+  </Col>
+  </Row>
+  <br></br>
+    <Row>
+    <Col md>
+  <Form.Group controlId="formGridaverage_grade">
         <Form.Label>Che media hai?</Form.Label>
         <Form.Control as="textarea" placeholder="Metti 0 se non hai ancora una media, Scrivi 31, per mettere 30 E LODE"/>
   </Form.Group>
-
-  <Row className="mb-3">
+      </Col>
+      <Col md>
       <Form.Group as={Col} controlId="formGridexams_not_done">
         <Form.Label>Hai degli esami indietro?</Form.Label>
-        <Form.Control type="text" placeholder="Seleziona Regionein situazioni non di emergenza"/>
-      </Form.Group>
+        </Form.Group>
       <Form>
     {['radio'].map((type) => (
       <div key={`inline-${type}`} className="mb-3">
@@ -560,13 +616,15 @@ class Recensisci extends React.Component {
       </div>
     ))}
   </Form>
-  </Row>
-  
+  </Col>
+  <Col md>
   <Form.Group as={Col} controlId="formGridnumb_exams_not_done">
         <Form.Label>Quanti sono?</Form.Label>
         <Form.Control />
   </Form.Group>
-
+  </Col>
+  </Row>
+  <br></br>
   <Form.Group as={Col} controlId="formGriddifficult_aspect">
         <Form.Label>Qual'è  l'ASPETTO del tuo corso che ti ha messo più in difficoltà?</Form.Label>
         <Form.Control as="textarea" placeholder="Es. i professori, l'ambiente, le materie, l organizzazione della didattica..."/>
@@ -581,8 +639,9 @@ class Recensisci extends React.Component {
         <Form.Label>Quali sono stati, finora, gli ESAMI che hai trovato più DIFFICILI?</Form.Label>
         <Form.Control as="textarea" placeholder="Scrivi NO se non hai ancora dato nessun esame"/>
   </Form.Group>
-
-  <Row className="mb-3">
+<br></br>
+  <Row>
+  <Col md>
       <Form.Group as={Col} controlId="formGridredo_choice">
         <Form.Label>Se potessi tornare indietro, sceglieresti di nuovo questo corso di laurea?</Form.Label>
       </Form.Group>
@@ -606,15 +665,15 @@ class Recensisci extends React.Component {
       </div>
     ))}
   </Form>
-  </Row>
-
-
-  <Row className="mb-3">
+  </Col>
+  <Col md>
   <Form.Group as={Col} controlId="formGridreason_redo_choice">
         <Form.Label>Perchè?</Form.Label>
         <Form.Control/>
   </Form.Group>
-
+      </Col>
+      </Row>
+      <Row>
   <Form.Group as={Col} controlId="formGriddecision_choice">
         <Form.Label>Cosa/Chi ti ha spinto a fare questa scelta?</Form.Label>
         <Form.Control/>
@@ -625,8 +684,9 @@ class Recensisci extends React.Component {
         <Form.Control />
   </Form.Group>
   </Row>
-
-  <Row className="mb-3">
+      <br></br>
+  <Row >
+  <Col md>
       <Form.Group as={Col} controlId="formGridexpectations_met">
         <Form.Label>Finora, sono state soddisfatte le tue aspettative? </Form.Label>
       </Form.Group>
@@ -650,14 +710,17 @@ class Recensisci extends React.Component {
       </div>
     ))}
   </Form>
-  </Row>
-      
+  </Col>
+  <Col md> 
   <Form.Group as={Col} controlId="formGridexpectations_no">
         <Form.Label>Come mai?</Form.Label>
         <Form.Control />
   </Form.Group>
+  </Col>
+  </Row>
 
-  <Row className="mb-3">
+  <Row >
+  <Col md>
       <Form.Group as={Col} controlId="formGridadvice">
         <Form.Label>Consiglieresti questa laurea?</Form.Label>
       </Form.Group>
@@ -681,8 +744,7 @@ class Recensisci extends React.Component {
       </div>
     ))}
   </Form>
-  </Row>
-
+  </Col>
   <Form.Group as={Col} controlId="formGridadvice_why">
         <Form.Label>Perchè?</Form.Label>
         <Form.Control />
@@ -692,115 +754,131 @@ class Recensisci extends React.Component {
         <Form.Label>A chi la consiglieresti??</Form.Label>
         <Form.Control />
   </Form.Group>
-                
-
+    </Row>    
+    <br></br>
+  <Card.Title as="h4" style={color}>Esperienze all'estero</Card.Title>
+  <br></br>
+  <Row>
+    <Col md>
+    <Form.Group as={Col} controlId="formGridabroad_experience">
+        <Form.Label>Hai fatto un’esperienza all’estero durante la tua carriera univeristaria?</Form.Label>
+        <Form.Control />
+      </Form.Group>
+      <Form>
+    {['radio'].map((type) => (
+      <div key={`inline-${type}`} className="mb-3">
+        <Form.Check
+          inline
+          label="SI"
+          name="abroad_experience"
+          type={type}
+          id={`inline-${type}-1`}
+        />
+        <Form.Check
+          inline
+          label="NO"
+          name="abroad_experience"
+          type={type}
+          id={`inline-${type}-2`}
+        />
+      </div>
+    ))}
+  </Form>
+  </Col>
+  <Col md>
+  <Form.Group className="mb-3" controlId="erasmus_type">
+  <Form.Label>Che tipo di esperienza?</Form.Label>
+  <Form.Control />
+        </Form.Group>
+      </Col>
+      </Row>
+      <Row>
+      <Col md>
+  <Form.Group className="mb-3" controlId="foreign_country">
+  <Form.Label>In che stato estero hai svolto la tua esperienza?</Form.Label>
+  <Form.Control />
+        </Form.Group>
+      </Col>
+      <Col md>
+  <Form.Group className="mb-3" controlId="foreign_city">
+  <Form.Label>In che città estera hai svolto la tua esperienza?</Form.Label>
+  <Form.Control />
+        </Form.Group>
+      </Col>
+      </Row>
+    <br></br>
+  <Card.Title as="h4" style={color}>Cambi di corso</Card.Title>
+  <br></br>
+  <Row>
+    <Col md>
+    <Form.Group as={Col} controlId="formGridchange_degree">
+        <Form.Label>Hai mai cambiato corso durante questa laurea?</Form.Label>
+      </Form.Group>
+      <Form>
+    {['radio'].map((type) => (
+      <div key={`inline-${type}`} className="mb-3">
+        <Form.Check
+          inline
+          label="SI"
+          name="change_degree"
+          type={type}
+          id={`inline-${type}-1`}
+        />
+        <Form.Check
+          inline
+          label="NO"
+          name="change_degree"
+          type={type}
+          id={`inline-${type}-2`}
+        />
+      </div>
+    ))}
+  </Form>
+  </Col>
+  <Col md>
+  <Form.Group className="mb-3" controlId="change_year">
+  <Form.Label>In che città estera hai svolto la tua esperienza?</Form.Label>
+  <Form.Control />
+        </Form.Group>
+      </Col>
+  </Row>
+  <Row>
+      <Col md>
   <Form.Group className="mb-3" controlId="prev_change_uni">
   <Form.Label>Qual'era la tua precedente UNIVERSITA'?</Form.Label>
   <Universities></Universities>
         </Form.Group>
-
-        
-
+      </Col>
+      <Col md>
   <Form.Group className="mb-3" controlId="select_triennial">
   <Form.Label>Che università hai frequentato alla triennale?</Form.Label>
-  <Form.Select aria-label="Default select example">
-        <option>Seleziona Triennale</option>
-        <option  value="Università degli Studi di BARI ALDO MORO">Università degli Studi di BARI ALDO MORO</option>
-        <option  value="Politecnico di BARI">Politecnico di BARI</option>
-        <option  value="LUM Giuseppe Degennaro">LUM "Giuseppe Degennaro"</option>
-        <option  value="Università degli Studi della BASILICATA">Università degli Studi della BASILICATA</option>
-        <option  value="Università degli Studi di BERGAMO">Università degli Studi di BERGAMO</option>
-        <option  value="Università degli Studi di BOLOGNA">Università degli Studi di BOLOGNA</option>
-        <option  value="Libera Università di BOLZANO">Libera Università di BOLZANO</option>
-        <option  value="Università degli Studi di BRESCIA">Università degli Studi di BRESCIA</option>
-        <option  value="Università degli Studi di CAGLIARI">Università degli Studi di CAGLIARI</option>
-        <option  value="Università della CALABRIA">Università della CALABRIA</option>
-        <option  value="Università degli Studi di CAMERINO">Università degli Studi di CAMERINO</option>
-        <option  value="Università degli Studi di CASSINO e del LAZIO MERIDIONALE">Università degli Studi di CASSINO e del LAZIO MERIDIONALE</option>
-        <option  value="Università Carlo Cattaneo - LIUC">Università "Carlo Cattaneo" - LIUC</option>
-        <option  value="Università degli Studi di CATANIA">Università degli Studi di CATANIA</option>
-        <option  value="Università degli Studi Magna Graecia di CATANZARO">Università degli Studi "Magna Graecia" di CATANZARO</option>
-        <option  value="Università degli Studi G d'Annunzio CHIETI-PESCARA">Università degli Studi "G. d'Annunzio" CHIETI-PESCARA</option>
-        <option  value="Università degli Studi di SCIENZE GASTRONOMICHE">Università degli Studi di SCIENZE GASTRONOMICHE</option>
-        <option  value="UKE - Università Kore di ENNA">UKE - Università Kore di ENNA</option>
-        <option  value="Università degli Studi di FERRARA">Università degli Studi di FERRARA</option>
-        <option  value="Università degli Studi di FIRENZE">Università degli Studi di FIRENZE</option>
-        <option  value="Università degli Studi di FOGGIA">Università degli Studi di FOGGIA</option>
-        <option  value="Università degli Studi di GENOVA">Università degli Studi di GENOVA</option>
-        <option  value="Università degli Studi INSUBRIA Varese-Como">Università degli Studi INSUBRIA Varese-Como</option>
-        <option  value="Università degli Studi de L'AQUILA">Università degli Studi de L'AQUILA</option>
-        <option  value="Università degli Studi di MACERATA">Università degli Studi di MACERATA</option>
-        <option  value="Università degli Studi di MESSINA">Università degli Studi di MESSINA</option>
-        <option  value="Università degli Studi di MILANO">Università degli Studi di MILANO</option>
-        <option  value="Università degli Studi di MILANO-BICOCCA">Università degli Studi di MILANO-BICOCCA</option>
-        <option  value="Politecnico di MILANO">Politecnico di MILANO</option>
-        <option  value="Università Commerciale Luigi Bocconi MILANO">Università Commerciale "Luigi Bocconi" MILANO</option>
-        <option  value="Università Cattolica del Sacro Cuore">Università Cattolica del Sacro Cuore</option>
-        <option  value="HUMANITAS University">HUMANITAS University</option>
-        <option  value="Libera Università di lingue e comunicazione IULM-MI">Libera Università di lingue e comunicazione IULM-MI</option>
-        <option  value="Libera Università Vita Salute San Raffaele MILANO">Libera Università "Vita Salute S.Raffaele" MILANO</option>
-        <option  value="Università degli Studi di MODENA e REGGIO EMILIA">Università degli Studi di MODENA e REGGIO EMILIA</option>
-        <option  value="Università degli Studi del MOLISE">Università degli Studi del MOLISE</option>
-        <option  value="Università degli Studi di NAPOLI Federico II">Università degli Studi di NAPOLI "Federico II"</option>
-        <option  value="Università degli Studi della Campania Luigi Vanvitelli">Università degli Studi della Campania "Luigi Vanvitelli"</option>
-        <option  value="Università degli Studi di NAPOLI Parthenope">Università degli Studi di NAPOLI "Parthenope"</option>
-        <option  value="Università degli Studi di NAPOLI L'Orientale">Università degli Studi di NAPOLI "L'Orientale"</option>
-        <option  value="Università degli Studi Suor Orsola Benincasa - NAPOLI">Università degli Studi Suor Orsola Benincasa - NAPOLI</option>
-        <option  value="Università degli Studi di PADOVA">Università degli Studi di PADOVA</option>
-        <option  value="Università degli Studi di PALERMO">Università degli Studi di PALERMO</option>
-        <option  value="Università degli Studi di PARMA">Università degli Studi di PARMA</option>
-        <option  value="Università degli Studi di PAVIA">Università degli Studi di PAVIA</option>
-        <option  value="Università degli Studi di PERUGIA">Università degli Studi di PERUGIA</option>
-        <option  value="Università per Stranieri di PERUGIA">Università per Stranieri di PERUGIA</option>
-        <option  value="Università degli Studi del PIEMONTE ORIENTALE Amedeo Avogadro-Vercelli">Università degli Studi del PIEMONTE ORIENTALE "Amedeo Avogadro"-Vercelli</option>
-        <option  value="Università di PISA">Università di PISA</option>
-        <option  value="Università Politecnica delle MARCHE">Università Politecnica delle MARCHE</option>
-        <option  value="Università degli Studi Mediterranea di REGGIO CALABRIA">Università degli Studi "Mediterranea" di REGGIO CALABRIA</option>
-        <option  value="Università per Stranieri Dante Alighieri di REGGIO CALABRIA">Università per Stranieri "Dante Alighieri" di REGGIO CALABRIA</option>
-        <option  value="Università degli Studi EUROPEA di ROMA">Università degli Studi EUROPEA di ROMA</option>
-        <option  value="Università degli Studi di ROMA Foro Italico">Università degli Studi di ROMA "Foro Italico"</option>
-        <option  value="Università degli Studi di ROMA La Sapienza">Università degli Studi di ROMA "La Sapienza"</option>
-        <option  value="Università degli Studi di ROMA Tor Vergata">Università degli Studi di ROMA "Tor Vergata"</option>
-        <option  value="Università degli Studi ROMA TRE">Università degli Studi ROMA TRE</option>
-        <option  value="Università Campus Bio-Medico di ROMA">Università "Campus Bio-Medico" di ROMA</option>
-        <option  value="Luiss Libera Università internazionale degli studi sociali Guido Carli">Luiss Libera Università internazionale degli studi sociali Guido Carli</option>
-        <option  value="LINK CAMPUS University">LINK CAMPUS University</option>
-        <option  value="Università degli Studi Internazionali di ROMA (UNINT)">Università degli Studi Internazionali di ROMA (UNINT)</option>
-        <option  value="UNICAMILLUS - Saint Camillus International University of Health Sciences">UNICAMILLUS - Saint Camillus International University of Health Sciences</option>
-        <option  value="Libera Università degli Studi Maria SS Assunta- LUMSA">Libera Università degli Studi "Maria SS.Assunta" - LUMSA</option>
-        <option  value="Università del SALENTO">Università del SALENTO</option>
-        <option  value="Università degli Studi di SALERNO">Università degli Studi di SALERNO</option>
-        <option  value="Università degli Studi del SANNIO di BENEVENTO">Università degli Studi del SANNIO di BENEVENTO</option>
-        <option  value="Università degli Studi di SASSARI">Università degli Studi di SASSARI</option>
-        <option  value="Università degli Studi di SIENA">Università degli Studi di SIENA</option>
-        <option  value="Università per Stranieri di SIENA">Università per Stranieri di SIENA</option>
-        <option  value="Università Telematica LEONARDO da VINCI">Università Telematica "LEONARDO da VINCI"</option>
-        <option  value="Università Telematica E-CAMPUS">Università Telematica "E-CAMPUS"</option>
-        <option  value="Università Telematica GIUSTINO FORTUNATO">Università Telematica "GIUSTINO FORTUNATO"</option>
-        <option  value="Università degli Studi Guglielmo Marconi - Telematica">Università degli Studi "Guglielmo Marconi" - Telematica</option>
-        <option  value="Università Telematica San Raffaele Rom">Università Telematica San Raffaele Roma</option>
-        <option  value="Università Telematica Internazionale UNINETTUNO">Università Telematica Internazionale UNINETTUNO</option>
-        <option  value="Università Telematica degli Studi IUL">Università Telematica degli Studi IUL</option>
-        <option  value="Università Telematica PEGASO">Università Telematica PEGASO</option>
-        <option value="Università Telematica UNITELMA SAPIENZA">Università Telematica UNITELMA SAPIENZA</option>
-        <option value="UNICUSANO Università degli Studi Niccolò Cusano -Telematica Roma">UNICUSANO Università degli Studi Niccolò Cusano -Telematica Roma</option>
-        <option value="Università Telematica Universitas MERCATORUM">Università Telematica "Universitas MERCATORUM"</option>
-        <option value="Università degli Studi di TERAMO">Università degli Studi di TERAMO</option>
-        <option value="Università degli Studi di TORINO">Università degli Studi di TORINO</option>
-        <option value="Politecnico di TORINO">Politecnico di TORINO</option>
-        <option value="Università degli Studi di TRENTO">Università degli Studi di TRENTO</option>
-        <option value="Università degli Studi di TRIESTE">Università degli Studi di TRIESTE</option>
-        <option value="Università degli Studi della TUSCIA">Università degli Studi della TUSCIA</option>
-        <option value="Università degli Studi di UDINE">Università degli Studi di UDINE</option>
-        <option value="Università degli Studi di Urbino Carlo Bo">Università degli Studi di Urbino Carlo Bo</option>
-        <option value="Università della VALLE D'AOSTA">Università della VALLE D'AOSTA</option>
-        <option value="Università Ca' Foscari VENEZIA">Università "Ca' Foscari" VENEZIA</option>
-        <option value="Università IUAV di VENEZIA">Università IUAV di VENEZIA</option>
-        <option value="Università degli Studi di VERONA">Università degli Studi di VERONA</option>
-        <option id="altro" value="altro" >Altro</option>
-        </Form.Select>
+  <Universities></Universities>
         </Form.Group>
+</Col>
+</Row>
+<Row>
+<Col md>
+  <Form.Group className="mb-3" controlId="prev_change_department">
+  <Form.Label>Qual'era la tua precedente FACOLTA'?</Form.Label>
+  <Form.Control />
+        </Form.Group>
+      </Col>
+      <Col md>
+  <Form.Group className="mb-3" controlId="prev_change_degree_course">
+  <Form.Label>Qual'era il tuo precedente CORSO DI LAUREA?</Form.Label>
+  <Form.Control />
+        </Form.Group>
+      </Col>
+      </Row>
 
+      <Col md>
+  <Form.Group className="mb-3" controlId="change_why">
+  <Form.Label>Perchè hai cambiato?</Form.Label>
+  <Form.Control as="textarea"/>
+        </Form.Group>
+      </Col>
+     <Row>
+      <Col md>
   <Form.Group className="mb-3" controlId="select_highschool">
   <Form.Label>Che scuola hai fatto alle superiori?</Form.Label>
   <Form.Select aria-label="Default select example">
@@ -824,11 +902,11 @@ class Recensisci extends React.Component {
     <option id="altro" value="altro" >Altro</option>
                           </Form.Select>
                           </Form.Group>
+                          </Col>
                           
                             
-
+<Col md>
   <Form.Label>Voto recensione</Form.Label>
-  <Form.Control />
   <Form.Select aria-label="Default select example">
       <option>Stars</option>
       <option  value="1">⭐</option>
@@ -837,7 +915,8 @@ class Recensisci extends React.Component {
       <option  value="4">⭐⭐⭐⭐</option>
       <option  value="5">⭐⭐⭐⭐⭐</option>
   </Form.Select>
-
+  </Col>
+      </Row>
   <Button variant="primary" type="submit">
       Submit
     </Button>
