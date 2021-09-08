@@ -4,28 +4,8 @@ import { Link } from "react-router-dom";
 import { Navbar, Nav,NavDropdown,Row,FormControl,Container } from 'react-bootstrap'
 import Image from 'react-bootstrap/Image'
 import logo from './logo_ai_university.png';
-//import Jumbotron from "src\components\logo_ai_university.png"
 
 
-/*function Navbar() {
-  const [click, setClick] = useState(false);
-  const [button, setButton] = useState(true);
-
-  const handleClick = () => setClick(!click);
-  const closeMobileMenu = () => setClick(false);
-
-  const showButton = () => {
-    if (window.innerWidth <= 960) {
-      setButton(false);
-    } else {
-      setButton(true);
-    }
-  };
-
-  window.addEventListener("resize", showButton);
-
-  return (
-    <>*/
     class Menu extends React.Component {
       render() {
         return (
@@ -39,7 +19,7 @@ import logo from './logo_ai_university.png';
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/about">About</Nav.Link>
             <Nav.Link href="/consigliami">Chiedi un consiglio</Nav.Link>
-            <Nav.Link href="/trova-ateneo">Lascia una recensione</Nav.Link>
+            <Nav.Link href="/recensisci">Lascia una recensione</Nav.Link>
             <NavDropdown title="Altro" id="collasible-nav-dropdown">
               <NavDropdown.Item href="/trova-corso-di-laurea">Cerca corso di laurea</NavDropdown.Item>
               <NavDropdown.Item href="/trova-ateneo">Cerca Ateneo</NavDropdown.Item>
