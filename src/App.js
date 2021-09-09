@@ -8,6 +8,7 @@ import Consigliami from "./components/pages/Consigliami";
 import TrovaAteneo from "./components/pages/TrovaAteneo";
 import TrovaCorsoDiLaurea from "./components/pages/TrovaCorsoDiLaurea";
 import SignUp from "./components/pages/SignUp";
+import DettaglioCorso from "./components/pages/DettaglioCorso";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path="/consigliami" exact component={Consigliami}/>
           <Route path="/trova-ateneo"  exact component={TrovaAteneo} />
           <Route path="/trova-corso-di-laurea"  exact component={TrovaCorsoDiLaurea} />
+          <Route path="/dettaglio-corso"  exact component={DettaglioCorso} />
           <Route path="/sign-up" exact component={SignUp} />
         </Switch>
       </Router>

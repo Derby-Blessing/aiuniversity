@@ -135,13 +135,11 @@ class TrovaAteneo extends React.Component {
       <Col md>
   <Form.Group className="mb-3" controlId="formGridtriennial_end_year">
   <Form.Label as="h5">Regione:</Form.Label>
-  <Form.Control />
         </Form.Group>
       </Col>
       <Col md>
   <Form.Group className="mb-3" controlId="formGridtriennial_end_year">
   <Form.Label as="h5">Provincia:</Form.Label>
-  <Form.Control />
         </Form.Group>
       </Col>
       </Row>
@@ -149,13 +147,11 @@ class TrovaAteneo extends React.Component {
       <Col md>
   <Form.Group className="mb-3" controlId="formGridtriennial_end_year">
   <Form.Label as="h5">Numero Studenti Sottoscritti:</Form.Label>
-  <Form.Control />
         </Form.Group>
       </Col>
       <Col md>
   <Form.Group className="mb-3" controlId="formGridreviews">
   <Form.Label as="h5">Recensioni:</Form.Label>
-  <Form.Control />
         </Form.Group>
       </Col>
       </Row>
