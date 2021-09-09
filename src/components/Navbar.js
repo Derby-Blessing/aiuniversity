@@ -8,6 +8,7 @@ import logo from './logo_ai_university.png';
 
     class Menu extends React.Component {
       render() {
+        const color ={color: '#1A237E'};
         return (
           <>
       <Navbar collapseOnSelect expand="lg" bg="white" variant="light">
@@ -16,13 +17,13 @@ import logo from './logo_ai_university.png';
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/about">About</Nav.Link>
-            <Nav.Link href="/consigliami">Chiedi un consiglio</Nav.Link>
-            <Nav.Link href="/recensisci">Lascia una recensione</Nav.Link>
+            <Nav.Link style={color} href="/">Home</Nav.Link>
+            <Nav.Link style={color} href="/about">About</Nav.Link>
+            <Nav.Link style={color} href="/consigliami">Chiedi un consiglio</Nav.Link>
+            <Nav.Link style={color} href="/recensisci">Lascia una recensione</Nav.Link>
             <NavDropdown title="Altro" id="collasible-nav-dropdown">
-              <NavDropdown.Item href="/trova-corso-di-laurea">Cerca corso di laurea</NavDropdown.Item>
-              <NavDropdown.Item href="/trova-ateneo">Cerca Ateneo</NavDropdown.Item>
+              <NavDropdown.Item style={color} href="/trova-corso-di-laurea">Cerca corso di laurea</NavDropdown.Item>
+              <NavDropdown.Item style={color} href="/trova-ateneo">Cerca Ateneo</NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>

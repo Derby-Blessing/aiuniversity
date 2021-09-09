@@ -3,10 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Form,Col, ListGroup, Row,FormControl,Card,Container,Button } from 'react-bootstrap';
 
 
-/*export const  pippo= ()=> {
-  return <h1 className='TrovaAteneo'>TROVA ATENEO</h1>;
-}*/
-
 class TrovaAteneo extends React.Component {
   render() {
     const bg_color ={backgroundColor: '#1A237E'};
