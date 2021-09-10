@@ -1,6 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { faCoffee } from '@fortawesome/fontawesome-free-solid'
 import { Form,Col, ListGroup, Row,Card,Container,Button } from 'react-bootstrap';
 
 class DettaglioCorso extends React.Component {
@@ -44,7 +45,7 @@ class DettaglioCorso extends React.Component {
         <Card.Header  as="h5"  style={color}>Esami Ritenuti Più Difficili: </Card.Header>
       <ListGroup variant="flush">
   <Card.Body>
-    <ListGroup.Item><Card.Link href="#">Recensione</Card.Link></ListGroup.Item>
+    <ListGroup.Item><FontAwesomeIcon icon={ faCoffee } /><Card.Link href="#">Recensione</Card.Link></ListGroup.Item>
     <ListGroup.Item><Card.Link href="#">Card.Link</Card.Link></ListGroup.Item>
     <ListGroup.Item><Card.Link href="#">Card Link</Card.Link></ListGroup.Item>
   </Card.Body>

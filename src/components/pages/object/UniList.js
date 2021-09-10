@@ -32,14 +32,11 @@ class UniList extends React.Component {
         {
             return (
             <>
-                <Container>
-                    <Form.Select aria-label="Default select example">
+                    <option selected value="">--SELEZIONA UNI--</option>
                         {universities.map(item=>(
                             <option value={item}>{item}</option>
                         ))}
-                    </Form.Select>
-    
-                </Container>
+                
             </>
           )
         }
