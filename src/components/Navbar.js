@@ -24,7 +24,6 @@ import logo from './logo_ai_university.png';
             <NavDropdown title="Altro" id="collasible-nav-dropdown">
               <NavDropdown.Item style={color} href="/trova-corso-di-laurea">Cerca corso di laurea</NavDropdown.Item>
               <NavDropdown.Item style={color} href="/trova-ateneo">Cerca Ateneo</NavDropdown.Item>
-              <NavDropdown.Item style={color} href="/dettaglio-corso">Dettaglio Corso</NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>

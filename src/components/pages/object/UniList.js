@@ -22,6 +22,7 @@ class UniList extends React.Component {
             })
         })
     }
+    
     render() {
         var {isLoaded, universities} = this.state;
         if (!isLoaded)
@@ -34,7 +35,7 @@ class UniList extends React.Component {
             <>
                     <option selected value="">--SELEZIONA UNI--</option>
                         {universities.map(item=>(
-                            <option value={item}>{item}</option>
+                            <option value={item} style={{textTransform: 'capitalize'}}>{item}</option>
                         ))}
                 
             </>

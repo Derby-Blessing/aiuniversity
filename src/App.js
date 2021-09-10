@@ -8,7 +8,7 @@ import Consigliami from "./components/pages/Consigliami";
 import TrovaAteneo from "./components/pages/TrovaAteneo";
 import TrovaCorsoDiLaurea from "./components/pages/TrovaCorsoDiLaurea";
 import SignUp from "./components/pages/SignUp";
-import DettaglioCorso from "./components/pages/DettaglioCorso";
+import DettaglioCorso from "./components/pages/subpages/DettaglioCorso";
 
 
 function App() {

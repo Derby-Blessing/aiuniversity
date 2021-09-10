@@ -1,21 +1,23 @@
 import React from 'react';
 import ReactStars from 'react-stars';
-import { Alert, Spinner, Form,Col, Row,FormControl,Card,Container } from 'react-bootstrap';
+import { Alert, Spinner, ListGroup,   Form,Col, Row,FormControl,Card,Container } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
-class UniReview extends React.Component {
+class CourseReview extends React.Component {
     constructor(props)
     {
         super(props)
         this.state ={
             university: this.props.university,
-            review_vote:-1,
+            course: this.props.course,
+            review_vote: 0,
             isLoaded: false,
         }
     }
  
     componentDidMount()
     {
-        const link='http://localhost:8008/getReviewAverangebyUni/'+ this.state.university
+        const link='http://localhost:8008/getReviewAverangebyCourse/'+ this.state.university+'/'+this.state.course
         
         fetch(link)
         .then(res=> res.json())
@@ -24,6 +26,7 @@ class UniReview extends React.Component {
                 isLoaded:true, 
                 review_vote: json.result,
             })
+            console.log(this.state.review_vote)
         })
     }
     render() {
@@ -34,9 +37,10 @@ class UniReview extends React.Component {
         }
         else 
         {
+           
             return (
             <>
-                   <ReactStars
+                <ReactStars
                     count={5}
                     value={review_vote}
                     edit={false}
@@ -49,4 +53,4 @@ class UniReview extends React.Component {
       
     }
 }
-export default UniReview
+export default CourseReview

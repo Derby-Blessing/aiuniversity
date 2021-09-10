@@ -47,37 +47,34 @@ class TrovaAteneo extends React.Component
     <>
 
     {this.state.isSubmit ? <InfoUni ></InfoUni> :
-    <Container fluid style={bg_color}>
+    <Container fluid >
+        <br></br>
+        <Container >
+          <center>
+          <Row className="justify-content-md-center">
+            
+          <Col md='auto' >
+            <Card>
+              <Card.Header  as="h1"  style={color}>Trova Ateneo</Card.Header>
+                <Card.Body>
+                <Form onSubmit={this.handleSubmit}>
+                <Form.Group className="mb-3" controlId="formGridselect_uni">
+                  <Form.Label as="h5" >Seleziona l'ateneo*</Form.Label>
+                    <Form.Select onChange={this.handleChange} required>
+                      <UniList></UniList>
+                    </Form.Select>
+                </Form.Group>
+                <Button variant="primary" type="submit" onClick={this.handleClick}>
+                  Cerca
+                </Button>
+                </Form>
+                </Card.Body>
+            </Card>
+          </Col>
+          </Row>
+          </center>
           <br></br>
-        <Container>
-        <Row>
-        <Col md="auto">
-        <Card className="text-center">
-    <Card.Header  as="h1"  style={color}>Trova Ateneo</Card.Header>
-    <Card.Body>
-      <Form onSubmit={this.handleSubmit}>
-      <Row >
-      <Col md>
-    <Form.Group className="mb-3" controlId="formGridselect_uni">
-    <Form.Label as="h5">Seleziona L'ateneo*</Form.Label>
-    <Form.Select onChange={this.handleChange}>
-      <UniList></UniList>
-    </Form.Select>
-    </Form.Group>
-            </Col>
-            </Row>
-      <Button variant="primary" type="submit" onClick={this.handleClick}>
-        Cerca
-      </Button>
-      <br></br>
-      <br></br>
-      
-    </Form>
-    </Card.Body>
-    </Card>
-    </Col>
-    </Row>
-    </Container>
+      </Container>
   </Container> }
   </>
   )
