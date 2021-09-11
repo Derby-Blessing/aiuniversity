@@ -32,10 +32,7 @@ class TrovaAteneo extends React.Component
 
     }
 
-    componentDidMount(){
-      
-     }
-
+  
     handleChange(event){
       this.setState({
         university: event.target.value,

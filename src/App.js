@@ -8,7 +8,7 @@ import Consigliami from "./components/pages/Consigliami";
 import InfoUni from "./components/pages/subpages/InfoUni";
 import TrovaAteneo from "./components/pages/TrovaAteneo";
 import TrovaCorsoDiLaurea from "./components/pages/TrovaCorsoDiLaurea";
-import DettaglioCorso from "./components/pages/DettaglioCorso";
+import DettaglioCorso from "./components/pages/subpages/DettaglioCorso";
 import ReviewAlgorithm from "./components/pages/ReviewAlgorithm";
 import SignUp from "./components/pages/SignUp";
 
