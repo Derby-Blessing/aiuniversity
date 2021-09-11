@@ -1,21 +1,24 @@
 import React from 'react';
 import { Alert, Spinner,  Form,Col, Row,FormControl,Card,Container } from 'react-bootstrap';
 
-class UniNumberOfPeople extends React.Component {
+class CourseNumberOfPeople extends React.Component {
   constructor(props)
   {
       super(props)
       this.state ={
           university: this.props.university,
+          course: this.props.course,
           isLoaded: false,
           numberOfPeople: ""
               }
+
       console.log(this.props.university)
+      console.log(this.props.course)
   }
 
   componentDidMount()
   {
-      const link='http://localhost:8008/getNumberOfPeopleByUni/'+ this.state.university
+      const link='http://localhost:8008/getNumberOfPeopleByCourseAndUni/'+ this.state.university+'/'+this.state.course
       console.log(link)
       fetch(link)
       .then(res=> res.json())
@@ -25,7 +28,7 @@ class UniNumberOfPeople extends React.Component {
               numberOfPeople: json.result,
           })
           console.log(json.result)
-          console.log (this.state.university)
+          console.log (this.props.course)
       })
   }
   render() {
@@ -33,7 +36,6 @@ class UniNumberOfPeople extends React.Component {
       if (!isLoaded)
       {
           return <Spinner animation="border" size="sm" />
-          
       }
       else 
       {
@@ -41,6 +43,7 @@ class UniNumberOfPeople extends React.Component {
          
               return (
               <> 
+                        
                       <span >{numberOfPeople}</span>
                   
               </>
@@ -49,4 +52,4 @@ class UniNumberOfPeople extends React.Component {
        
       }
   }
-export default UniNumberOfPeople
+export default CourseNumberOfPeople

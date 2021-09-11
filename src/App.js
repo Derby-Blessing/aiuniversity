@@ -5,6 +5,7 @@ import NewHome from "./components/pages/NewHome";
 import About from "./components/pages/About";
 import Recensisci from "./components/pages/Recensisci";
 import Consigliami from "./components/pages/Consigliami";
+import InfoUni from "./components/pages/subpages/InfoUni";
 import TrovaAteneo from "./components/pages/TrovaAteneo";
 import TrovaCorsoDiLaurea from "./components/pages/TrovaCorsoDiLaurea";
 import DettaglioCorso from "./components/pages/DettaglioCorso";

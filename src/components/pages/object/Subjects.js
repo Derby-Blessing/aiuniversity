@@ -1,0 +1,54 @@
+import React from 'react';
+import { Alert, Spinner, ListGroup,   Form,Col, Row,FormControl,Card,Container } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+
+class Subjects extends React.Component {
+    constructor(props)
+    {
+        super(props)
+        this.state ={
+            university: this.props.university,
+            course: this.props.course,
+            subjects:[],
+            isLoaded: false,
+        }
+    }
+ 
+    componentDidMount()
+    {
+        const link='http://localhost:8008/getAllSubjectsByUni/'+ this.state.university+'/'+this.state.course
+        
+        fetch(link)
+        .then(res=> res.json())
+        .then(json => {
+            this.setState({
+                isLoaded:true, 
+                subjects: json.result,
+            })
+            console.log(this.state.subjects)
+        })
+    }
+    render() {
+        var {isLoaded, subjects} = this.state;
+        if (!isLoaded)
+        {
+            return <Alert><Spinner animation="border" variant="primary" /> Loading..</Alert>
+        }
+        else 
+        {
+           
+            return (
+            <>
+                         <ListGroup variant="flush">
+                            {subjects.map(item=>(
+                                <ListGroup.Item><span style={{textTransform: 'capitalize'}}>{item}</span></ListGroup.Item>
+                            ))}
+                        </ListGroup>
+                
+            </>
+          )
+        }
+      
+    }
+}
+export default Subjects
