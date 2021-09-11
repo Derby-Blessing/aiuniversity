@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactStars from 'react-stars';
-import { Alert, Spinner, Form,Col, Row,FormControl,Card,Container } from 'react-bootstrap';
+import { Alert, Spinner,Badge, Form,Col, Row,FormControl,Card,Container } from 'react-bootstrap';
 
 class UniReview extends React.Component {
     constructor(props)
@@ -32,11 +32,15 @@ class UniReview extends React.Component {
         {
             return <Spinner animation="border" variant="warning" /> 
         }
+        else if (review_vote ==0)
+        {
+            return <p><i>Nessuna recensione</i></p>
+        }
         else 
         {
             return (
             <>
-                   <ReactStars
+                    <ReactStars
                     count={5}
                     value={review_vote}
                     edit={false}

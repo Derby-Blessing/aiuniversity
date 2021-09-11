@@ -1,6 +1,9 @@
 import React from 'react';
-import { Alert, Spinner, ListGroup,   Form,Col, Row,FormControl,Card,Container } from 'react-bootstrap';
+import { Alert, Spinner, ListGroup,   Form,Col, Row,FormControl,Card, Badge, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import CourseNumberOfPeople from "../object/CourseNumberOfPeople";
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { faUsers, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 class UniCourse extends React.Component {
     constructor(props)
@@ -40,7 +43,12 @@ class UniCourse extends React.Component {
             <>
                          <ListGroup variant="flush">
                             {courses.map(item=>(
-                                <ListGroup.Item><Link to={{pathname:"/dettaglio-corso", state: {course: item }}}><span style={{textTransform: 'capitalize'}}>{item}</span></Link></ListGroup.Item>
+                                <ListGroup.Item><Link to={{pathname:"/dettaglio-corso", state: {course: item }}}>
+                                    <Button variant="primary"><FontAwesomeIcon icon={faArrowRight}></FontAwesomeIcon>
+                                    {'\u00A0'}{item} {'\u00A0'}<Badge bg="light" text="dark"><FontAwesomeIcon icon={faUsers}></FontAwesomeIcon><CourseNumberOfPeople university={this.state.university} course={item}></CourseNumberOfPeople></Badge>
+                                    </Button>
+                                    </Link>
+                                    </ListGroup.Item>
                             ))}
                         </ListGroup>
                 

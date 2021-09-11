@@ -2,6 +2,7 @@ import React from 'react';
 import UniList from "./object/UniList";
 import InfoUni from "./subpages/InfoUni";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import History from 'history/createBrowserHistory'
 import { Form,Col, ListGroup, Row,FormControl,Card,Container,Button } from 'react-bootstrap';
 
 
@@ -12,15 +13,19 @@ class TrovaAteneo extends React.Component
   constructor(props)
     {
       super(props)
-      
       this.state={
         university: "",
         isSubmit: false,
       }
+      
       this.handleChange = this.handleChange.bind(this)
       this.handleSubmit = this.handleSubmit.bind(this)
 
     }
+
+    componentDidMount(){
+      
+     }
 
     handleChange(event){
       this.setState({
@@ -37,6 +42,7 @@ class TrovaAteneo extends React.Component
         isSubmit: true,
       })
       localStorage.setItem('university', this.state.university);
+      localStorage.setItem('arriveByForm', true);
       event.preventDefault()
 
     }

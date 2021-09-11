@@ -37,7 +37,13 @@ class CourseReview extends React.Component {
         }
         else 
         {
-           
+
+            if (reviews.length  < 1)
+            {
+                return <Alert> Non è stata trovata nessuna recensione per questo corso</Alert>
+            }
+           else
+           {
             return (
             <>
 
@@ -65,9 +71,12 @@ class CourseReview extends React.Component {
                 
                 
             </>
+           
           )
         }
-      
+        
     }
+      
+}
 }
 export default CourseReview

@@ -35,6 +35,10 @@ class CourseReview extends React.Component {
         {
             return <Spinner animation="border" variant="warning" /> 
         }
+        else if (review_vote ==0)
+        {
+            return <p><i>Nessuna recensione</i></p>
+        }
         else 
         {
            
