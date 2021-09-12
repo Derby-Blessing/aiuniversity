@@ -1,5 +1,9 @@
 import React from "react";
-import { Card, CardGroup, Button } from "react-bootstrap";
+import { Card, CardGroup, Button , Row, Col} from "react-bootstrap";
+import advice from "../images/advice1.jpg";
+import trovaUni from "../images/trova_ateneo.png";
+import recensisci from "../images/recensisci3.png";
+import trovaCorso from "../images/trova-corso.png";
 
 class NewHome extends React.Component {
   render() {
@@ -8,7 +12,7 @@ class NewHome extends React.Component {
         <center>
           <CardGroup>
             <Card>
-              <Card.Img variant="top" src="Imaggini/advice1.jpg/100px160" />
+              <Card.Img variant="top" src={advice} height="50%"/>
               <Card.Body>
                 <Card.Title>Consigliami</Card.Title>
                 <Card.Text>La pagina consigliami.....</Card.Text>
@@ -22,27 +26,7 @@ class NewHome extends React.Component {
               </Button>
             </Card>
             <Card>
-              <Card.Img variant="top" src="Imaggini/trova_uni3.jpg/100px160" />
-              <Card.Body>
-                <Card.Title>Trova Ateneo</Card.Title>
-                <Card.Text>
-                  Non sei sicura di quale ateneo vuoi frequentare? Sei indecisa
-                  su quale corso è giusto per te? Non preoccuparti più....Siamo
-                  qui per aiutarti.......
-                </Card.Text>
-              </Card.Body>
-              <Button
-                variant="primary"
-                type="submit"
-                onClick={this.handleClick}
-              >
-                Vedi
-              </Button>
-            </Card>
-          </CardGroup>
-          <CardGroup>
-            <Card>
-              <Card.Img variant="top" src="Imaggini/recensisci3.jpg/100px160" />
+              <Card.Img variant="top" src={recensisci} height="50%"/>
               <Card.Body>
                 <Card.Title>Lasciaci Una Recensione</Card.Title>
                 <Card.Text>
@@ -59,15 +43,35 @@ class NewHome extends React.Component {
               </Button>
             </Card>
             <Card>
-              <Card.Img variant="top" src="Imaggini/cosigliami2.jpg/100px160" />
+              <Card.Img variant="top" src={trovaUni} height="50%" />
               <Card.Body>
-                <Card.Title>Hai Bisogno di Altri Informazioni?</Card.Title>
-                <Card.Text>Hai Bisogno di Altri Informazioni?</Card.Text>
+                <Card.Title>Trova Ateneo</Card.Title>
+                <Card.Text>
+                  Non sei sicura di quale ateneo vuoi frequentare? Sei indecisa
+                  su quale corso è giusto per te? Non preoccuparti più....Siamo
+                  qui per aiutarti.......
+                </Card.Text>
               </Card.Body>
+              <Button
+                variant="primary"
+                type="submit"
+                onClick={this.handleClick}
+              >
+                Vedi
+              </Button>
+            </Card>
+            <Card>
+              <Card.Img variant="top" src={trovaCorso}  height="50%"/>
               <Card.Body>
-                <Card.Link href="#">Trova Corso Di Laurea</Card.Link>
-                <Card.Link href="#">ATrova Ateneo</Card.Link>
+              sdjdjiojsf
               </Card.Body>
+              <Button
+                variant="primary"
+                type="submit"
+                onClick={this.handleClick}
+              >
+                Vedi
+              </Button>
             </Card>
           </CardGroup>
         </center>
