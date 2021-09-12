@@ -8,6 +8,8 @@ class UniList extends React.Component {
         this.state ={
             universities:[],
             isLoaded: false,
+            error:false, 
+            errorName: "",
         }
     }
  
@@ -20,26 +22,40 @@ class UniList extends React.Component {
                 isLoaded:true, 
                 universities: json.result,
             })
+        }).catch(e => {this.setState({
+            error:true, 
+            errorName: e,
+            isLoaded:true, 
         })
+          })
     }
     
     render() {
-        var {isLoaded, universities} = this.state;
+        var {isLoaded, universities, error} = this.state;
         if (!isLoaded)
         {
-            return <Alert>Loading....</Alert>
+            return <option selected value="">Loading....</option>
         }
         else 
-        {
+        {if(!error)
+            {
+             
             return (
-            <>
-                    <option selected value="">--SELEZIONA UNI--</option>
-                        {universities.map(item=>(
-                            <option value={item} style={{textTransform: 'capitalize'}}>{item}</option>
-                        ))}
-                
-            </>
-          )
+                <>
+                        <option selected value="">--SELEZIONA UNI--</option>
+                            {universities.map(item=>(
+                                <option value={item} style={{textTransform: 'capitalize'}}>{item}</option>
+                            ))}
+                    
+                </>
+                )
+
+             }
+             else
+             {
+               return <option selected value="">Impossibile recuperare i dati richiesti</option>
+             }
+            
         }
       
     }

@@ -12,6 +12,8 @@ class TeachingQuality extends React.Component {
             course: this.props.course,
             teachingQuality: 0,
             isLoaded: false,
+            error:false, 
+            errorName: "",
         }
     }
  
@@ -27,21 +29,33 @@ class TeachingQuality extends React.Component {
                 teachingQuality: json.result,
             })
             console.log(this.state.teachingQuality)
+        }).catch(e => {this.setState({
+            error:true, 
+            errorName: e,
+            isLoaded:true, 
         })
+          })
     }
     render() {
-        var {isLoaded, teachingQuality} = this.state;
+        var {isLoaded, teachingQuality, error} = this.state;
         var teachingQualityPerc=(teachingQuality*100)/10;
         if (!isLoaded)
         {
             return <p>Loading...<Spinner animation="border" size="sm" /></p> 
         }
         else 
-        {
-            return <>
-            <h6 ><b>Qualità dei professori</b></h6>
-            <ProgressBar  animated now={teachingQualityPerc} label={teachingQuality} />
-            </>
+        {if(!error)
+            {
+                return <>
+                <h6 ><b>Qualità dei professori</b></h6>
+                <ProgressBar  animated now={teachingQualityPerc} label={teachingQuality} />
+                </>
+             }
+             else
+             {
+               return <Alert variant="danger">Impossibile recuperare i dati richiesti</Alert>
+             }
+            
             
         }
       

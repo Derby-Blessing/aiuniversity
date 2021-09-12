@@ -12,6 +12,8 @@ class DurationAverage extends React.Component {
             course: this.props.course,
             durationAverage: 0,
             isLoaded: false,
+            error:false, 
+            errorName: "",
         }
     }
  
@@ -27,21 +29,37 @@ class DurationAverage extends React.Component {
                 durationAverage: json.result,
             })
             console.log(this.state.durationAverage)
+        }).catch(e => {this.setState({
+            error:true, 
+            errorName: e,
+            isLoaded:true, 
         })
+          })
     }
     render() {
-        var {isLoaded, durationAverage} = this.state;
+        var {isLoaded, durationAverage, error} = this.state;
         if (!isLoaded)
         {
             return <Alert><Spinner animation="border" variant="primary" /> Loading..</Alert> 
         }
-        else if (durationAverage =='undefined')
-        {
-            return <p><i>Nessun voto è stato trovato</i></p>
-        }
         else 
         {
-            return <span><b>{durationAverage}</b></span>
+            if(!error)
+            {
+                if (durationAverage =='undefined')
+                    {
+                        return <p><i>Nessun durata è stata trovata</i></p>
+                    }
+                else
+                {
+                    return <span><b>{durationAverage}</b></span>
+
+                }
+             }
+             else
+             {
+               return <Alert variant="danger">Impossibile recuperare i dati richiesti</Alert>
+             }
             
         }
       

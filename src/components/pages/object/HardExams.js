@@ -11,6 +11,8 @@ class HardExams extends React.Component {
             course: this.props.course,
             exams:[],
             isLoaded: false,
+            error:false, 
+            errorName: "",
         }
     }
  
@@ -26,27 +28,41 @@ class HardExams extends React.Component {
                 exams: json.result,
             })
             console.log(this.state.exams)
+        }).catch(e => {this.setState({
+            error:true, 
+            errorName: e,
+            isLoaded:true, 
         })
+          })
     }
     render() {
-        var {isLoaded, exams} = this.state;
+        var {isLoaded, exams, error} = this.state;
         if (!isLoaded)
         {
             return <Alert><Spinner animation="border" variant="primary" /> Loading..</Alert>
         }
         else 
         {
-           
-            return (
-            <>
-                    <ListGroup variant="flush">
-                    {exams.map(item=>(
-                        <ListGroup.Item><span >{item}</span></ListGroup.Item>
-                    ))}
-                </ListGroup>
+            if(!error)
+            {
                 
-            </>
-          )
+                    return (
+                        <>
+                                <ListGroup variant="flush">
+                                {exams.map(item=>(
+                                    <ListGroup.Item><span >{item}</span></ListGroup.Item>
+                                ))}
+                            </ListGroup>
+                            
+                        </>
+                    )
+             }
+             else
+             {
+               return <Alert variant="danger">Impossibile recuperare i dati richiesti</Alert>
+             }
+            
+          
         }
       
     }

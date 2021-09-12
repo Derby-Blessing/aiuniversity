@@ -12,6 +12,8 @@ class DegreeAverage extends React.Component {
             course: this.props.course,
             degreeAverage: 0,
             isLoaded: false,
+            error:false, 
+            errorName: "",
         }
     }
  
@@ -27,20 +29,37 @@ class DegreeAverage extends React.Component {
                 degreeAverage: json.result,
             })
             console.log(this.state.degreeAverage)
+        }).catch(e => {this.setState({
+            error:true, 
+            errorName: e,
+            isLoaded:true, 
         })
+          })
     }
     render() {
-        var {isLoaded, degreeAverage} = this.state;
+        var {isLoaded, degreeAverage,error} = this.state;
         if (!isLoaded)
         {
             return <Alert><Spinner animation="border" variant="primary" /> Loading..</Alert> 
         }
-        else if (degreeAverage ==0)
-        {
-            return <p><i>Nessun voto è stato trovato</i></p>
-        }
+        
         else 
         {
+            if(!error)
+            {
+                if (degreeAverage ==0)
+                {
+                    return <p><i>Nessun voto è stato trovato</i></p>
+                }
+                else
+                {
+                    return <span><b>{degreeAverage}</b></span>
+                }
+             }
+             else
+             {
+               return <Alert variant="danger">Impossibile recuperare i dati richiesti</Alert>
+             }
             return <span><b>{degreeAverage}</b></span>
             
         }

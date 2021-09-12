@@ -52,12 +52,13 @@ class TrovaAteneo extends React.Component
       event.preventDefault()
   }
   render() {
+    const information=this.state.isSubmit
     const bg_color ={backgroundColor: '#1A237E'};
   const color ={color: '#1A237E'};
   return (
     <>
 
-    {this.state.isSubmit ? <InfoUni ></InfoUni> :
+    {information ? <InfoUni></InfoUni>:
     <Container fluid >
         <br></br>
         <Container >

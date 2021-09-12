@@ -11,6 +11,8 @@ class PredictResult extends React.Component {
             infoStudent: JSON.parse(localStorage.getItem('infoStudent')), 
             predict: '',
             isLoaded: false,
+            error:false, 
+            errorName: "",
         }
         console.log(localStorage.getItem('infoStudent'))
         console.log('inizio')
@@ -29,21 +31,36 @@ class PredictResult extends React.Component {
       .then(json => this.setState({
         predict: json.result,
         isLoaded: true
-      }))
+      })).catch(e => {this.setState({
+        error:true, 
+        errorName: e,
+        isLoaded:true, 
+    })
+      })
       console.log(JSON.stringify(this.state.infoStudent) )
       console.log(requestOptions )
       console.log('chiamata')
       console.log(this.state.predict)
     }
     render() {
-        var {isLoaded, predict} = this.state;
+        var {isLoaded, predict, error} = this.state;
         if (!isLoaded)
         {
             return <Alert><Spinner animation="border" variant="primary" /> Loading..</Alert> 
         }
         else 
         {
-            return <span><b>{predict}</b></span>
+            if(!error)
+            {
+               
+                    return <span><b>{predict}</b></span>
+                
+             }
+             else
+             {
+               return <Alert variant="danger">Impossibile recuperare i dati richiesti</Alert>
+             }
+            
             
         }
       
