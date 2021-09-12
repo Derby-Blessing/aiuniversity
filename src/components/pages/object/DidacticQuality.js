@@ -14,6 +14,8 @@ class DidiacticQuality extends React.Component {
             course: this.props.course,
             didiacticQuality: 0,
             isLoaded: false,
+            error:false, 
+            errorName: "",
         }
     }
  
@@ -29,10 +31,15 @@ class DidiacticQuality extends React.Component {
                 didiacticQuality: json.result,
             })
             console.log(this.state.didiacticQuality)
+        }).catch(e => {this.setState({
+            error:true, 
+            errorName: e,
+            isLoaded:true, 
         })
+          })
     }
     render() {
-        var {isLoaded, didiacticQuality} = this.state;
+        var {isLoaded, didiacticQuality,error} = this.state;
         var didiacticQualityPerc=(didiacticQuality*100)/10;
         if (!isLoaded)
         {
@@ -41,11 +48,21 @@ class DidiacticQuality extends React.Component {
         }
 
         else 
-        {
-            return <>
-            <h6 ><b>Qualità della didattica</b></h6>
-            <ProgressBar  animated now={didiacticQualityPerc} label={didiacticQuality} />
-            </>
+        {if(!error)
+            {
+                
+                
+                    return <>
+                        <h6 ><b>Qualità della didattica</b></h6>
+                        <ProgressBar  animated now={didiacticQualityPerc} label={didiacticQuality} />
+                        </>
+                
+             }
+             else
+             {
+               return <Alert variant="danger">Impossibile recuperare i dati richiesti</Alert>
+             }
+            
             
         }
       

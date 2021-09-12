@@ -12,6 +12,8 @@ class CourseReview extends React.Component {
             course: this.props.course,
             review_vote: 0,
             isLoaded: false,
+            error:false, 
+            errorName: "",
         }
     }
  
@@ -27,32 +29,48 @@ class CourseReview extends React.Component {
                 review_vote: json.result,
             })
             console.log(this.state.review_vote)
+        }).catch(e => {this.setState({
+            error:true, 
+            errorName: e,
+            isLoaded:true, 
         })
+          })
     }
     render() {
-        var {isLoaded, review_vote} = this.state;
+        var {isLoaded, review_vote, error} = this.state;
         if (!isLoaded)
         {
             return <Spinner animation="border" variant="warning" /> 
         }
-        else if (review_vote ==0)
-        {
-            return <p><i>Nessuna recensione</i></p>
-        }
+        
         else 
         {
-           
-            return (
-            <>
-                <ReactStars
-                    count={5}
-                    value={review_vote}
-                    edit={false}
-                    size={24}
-                    color2={'#ffd700'} />
-                
-            </>
-          )
+            if(!error)
+            {
+                if (review_vote ==0)
+                    {
+                        return <p><i>Nessuna recensione</i></p>
+                    }
+                else
+                {
+                    return (
+                        <>
+                            <ReactStars
+                                count={5}
+                                value={review_vote}
+                                edit={false}
+                                size={24}
+                                color2={'#ffd700'} />
+                            
+                        </>
+                    )
+                }
+             }
+             else
+             {
+               return <Alert variant="danger">Impossibile recuperare i dati richiesti</Alert>
+             }
+            
         }
       
     }

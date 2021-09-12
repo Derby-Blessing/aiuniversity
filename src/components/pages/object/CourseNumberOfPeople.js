@@ -9,8 +9,10 @@ class CourseNumberOfPeople extends React.Component {
           university: this.props.university,
           course: this.props.course,
           isLoaded: false,
-          numberOfPeople: ""
-              }
+          numberOfPeople: "", 
+          error: false,
+          errorName: "", 
+        }
 
       console.log(this.props.university)
       console.log(this.props.course)
@@ -20,7 +22,7 @@ class CourseNumberOfPeople extends React.Component {
   {
       const link='http://localhost:8008/getNumberOfPeopleByCourseAndUni/'+ this.state.university+'/'+this.state.course
       console.log(link)
-      fetch(link)
+      let response = fetch(link)
       .then(res=> res.json())
       .then(json => {
           this.setState({
@@ -29,10 +31,16 @@ class CourseNumberOfPeople extends React.Component {
           })
           console.log(json.result)
           console.log (this.props.course)
+      }).catch(e => {this.setState({
+        error:true, 
+        errorName: e,
+        isLoaded:true, 
+    })
       })
+      console.log(this.state.error)
   }
   render() {
-      var {isLoaded, numberOfPeople} = this.state;
+      var {isLoaded, numberOfPeople, error} = this.state;
       if (!isLoaded)
       {
           return <Spinner animation="border" size="sm" />
@@ -40,16 +48,22 @@ class CourseNumberOfPeople extends React.Component {
       else 
       {
           console.log(numberOfPeople)
-         
+         if(!error)
+         {
               return (
               <> 
-                        
+                       
                       <span >{numberOfPeople}</span>
                   
               </>
                )
           }
+          else
+          {
+            return <Alert variant="danger">Impossibile recuperare i dati richiesti</Alert>
+          }
        
       }
   }
+}
 export default CourseNumberOfPeople

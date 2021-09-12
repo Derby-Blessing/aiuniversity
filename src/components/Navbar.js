@@ -37,18 +37,12 @@ class Menu extends React.Component {
                 <Nav.Link style={color} href="/recensisci">
                   Lascia Una Recensione
                 </Nav.Link>
-                <Nav.Link style={color} href="/trova-corso-di-laurea">
-                  Cerca Corso Di Laurea
-                </Nav.Link>
                 <NavDropdown title="Altro" id="collasible-nav-dropdown">
                   <NavDropdown.Item style={color} href="/trova-ateneo">
                     Cerca Ateneo
                   </NavDropdown.Item>
-                  <NavDropdown.Item style={color} href="/review-algorithm">
-                    Review Algorithm
-                  </NavDropdown.Item>
-                  <NavDropdown.Item style={color} href="/dettaglio-corso">
-                    Dettaglio Corso
+                  <NavDropdown.Item style={color} href="/trova-corso-di-laurea">
+                    Cerca Corso Di Laurea
                   </NavDropdown.Item>
                 </NavDropdown>
               </Nav>

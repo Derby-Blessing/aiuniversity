@@ -8,7 +8,9 @@ class Province extends React.Component {
         this.state ={
             university: this.props.university,
             isLoaded: false,
-            province:""
+            province:"",
+            error:false, 
+            errorName: "",
             
         }
         console.log(this.props.university)
@@ -27,10 +29,15 @@ class Province extends React.Component {
             })
             console.log(json.result)
             console.log (this.state.province)
+        }).catch(e => {this.setState({
+            error:true, 
+            errorName: e,
+            isLoaded:true, 
         })
+          })
     }
     render() {
-        var {isLoaded, province} = this.state;
+        var {isLoaded, province, error} = this.state;
         if (!isLoaded)
         {
             return <Alert><Spinner animation="border" variant="primary" /> Loading..</Alert>
@@ -44,14 +51,22 @@ class Province extends React.Component {
             }
             else
             {
+                if(!error)
+            {
                 return (
-                <>
-                    
-                    
-                        <span>{province}</span>
-                    
-                </>
-                 )
+                    <>
+                        
+                        
+                            <span>{province}</span>
+                        
+                    </>
+                     )
+             }
+             else
+             {
+               return <Alert variant="danger">Impossibile recuperare i dati richiesti</Alert>
+             }
+                
             }
          
         }

@@ -1,12 +1,12 @@
 import React from 'react';
 import { Alert, Form,Col, Row,FormControl,Card,Container } from 'react-bootstrap';
 
-class UniList extends React.Component {
+class CourseList extends React.Component {
     constructor(props)
     {
         super(props)
         this.state ={
-            universities:[],
+            courses:[],
             isLoaded: false,
             error:false, 
             errorName: "",
@@ -15,12 +15,12 @@ class UniList extends React.Component {
  
     componentDidMount()
     {
-        fetch('http://localhost:8008/getAllUni')
+        fetch('http://localhost:8008/getAllCourses')
         .then(res=> res.json())
         .then(json => {
             this.setState({
                 isLoaded:true, 
-                universities: json.result,
+                courses: json.result,
             })
         }).catch(e => {this.setState({
             error:true, 
@@ -31,7 +31,7 @@ class UniList extends React.Component {
     }
     
     render() {
-        var {isLoaded, universities, error} = this.state;
+        var {isLoaded, courses, error} = this.state;
         if (!isLoaded)
         {
             return <option selected value="">Loading....</option>
@@ -42,8 +42,8 @@ class UniList extends React.Component {
              
             return (
                 <>
-                        <option selected value="">--SELEZIONA UNI--</option>
-                            {universities.map(item=>(
+                        <option selected value="">--SELEZIONA CORSO--</option>
+                            {courses.map(item=>(
                                 <option value={item} style={{textTransform: 'capitalize'}}>{item}</option>
                             ))}
                     
@@ -60,4 +60,4 @@ class UniList extends React.Component {
       
     }
 }
-export default UniList
+export default CourseList

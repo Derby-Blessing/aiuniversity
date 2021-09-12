@@ -8,7 +8,9 @@ class Region extends React.Component {
         this.state ={
             university: this.props.university,
             isLoaded: false,
-            region: ""
+            region: "",
+            error:false, 
+            errorName: "",
                 }
         console.log(this.props.university)
     }
@@ -26,10 +28,15 @@ class Region extends React.Component {
             })
             console.log(json.result)
             console.log (this.state.university)
+        }).catch(e => {this.setState({
+            error:true, 
+            errorName: e,
+            isLoaded:true, 
         })
+          })
     }
     render() {
-        var {isLoaded, region} = this.state;
+        var {isLoaded, region, error} = this.state;
         if (!isLoaded)
         {
             return <Alert><Spinner animation="border" variant="primary" /> Loading..</Alert>
@@ -42,15 +49,22 @@ class Region extends React.Component {
                 return (<span>Nessuna regione è stata trovata</span>)
             }
             else
-            {
-                return (
-                <>
-                    
-                    
-                        <span style={{textTransform: 'capitalize'}}>{region}</span>
-                    
-                </>
-                 )
+            {if(!error)
+                {
+                    return (
+                        <>
+                            
+                            
+                                <span style={{textTransform: 'capitalize'}}>{region}</span>
+                            
+                        </>
+                         )
+                 }
+                 else
+                 {
+                   return <Alert variant="danger">Impossibile recuperare i dati richiesti</Alert>
+                 }
+                
             }
          
         }

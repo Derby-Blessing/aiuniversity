@@ -8,7 +8,9 @@ class UniNumberOfPeople extends React.Component {
       this.state ={
           university: this.props.university,
           isLoaded: false,
-          numberOfPeople: ""
+          numberOfPeople: "",
+          error:false, 
+          errorName: "",
               }
       console.log(this.props.university)
   }
@@ -26,10 +28,15 @@ class UniNumberOfPeople extends React.Component {
           })
           console.log(json.result)
           console.log (this.state.university)
+      }).catch(e => {this.setState({
+        error:true, 
+        errorName: e,
+        isLoaded:true, 
+    })
       })
   }
   render() {
-      var {isLoaded, numberOfPeople} = this.state;
+      var {isLoaded, numberOfPeople, error} = this.state;
       if (!isLoaded)
       {
           return <Spinner animation="border" size="sm" />
@@ -37,14 +44,23 @@ class UniNumberOfPeople extends React.Component {
       }
       else 
       {
-          console.log(numberOfPeople)
+        if(!error)
+        {
+            
+            return (
+                <> 
+                        <span >{numberOfPeople}</span>
+                    
+                </>
+                    )
+            
+         }
+         else
+         {
+           return <Alert variant="danger">Impossibile recuperare i dati richiesti</Alert>
+         }
          
-              return (
-              <> 
-                      <span >{numberOfPeople}</span>
-                  
-              </>
-               )
+              
           }
        
       }

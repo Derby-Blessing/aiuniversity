@@ -14,19 +14,31 @@ class InfoUni extends React.Component {
   {
     super(props)
     var {uni}="";
+    console.log('IO SONO INFO UNI')
+    console.log(localStorage.getItem('arriveByForm'))
     if(localStorage.getItem('arriveByForm'))
     {
         uni = localStorage.getItem('university')
+        console.log('form:')
+        console.log(uni)
+
     }
     else
     {
         uni=props.location.state
+        console.log('altro:')
+        console.log(uni)
     }
+    console.log(uni)
     this.state={
       university: uni
       
     }
+    this.refreshPage = this.refreshPage.bind(this)
   }
+   refreshPage(){
+    window.location.reload();
+ }
   
   
   render (){
@@ -34,7 +46,6 @@ class InfoUni extends React.Component {
     const color ={color: '#1A237E'};
       return (
         <>
-
             <Container fluid>
               <Container>
                 <Row className="justify-content-md-center">
@@ -43,7 +54,7 @@ class InfoUni extends React.Component {
                     <Card.Header   style={color} >
                       <Row>
                       <Col md="auto" >
-                          <Link to={{pathname:"/trova-ateneo" }}><FontAwesomeIcon icon={faSearch}></FontAwesomeIcon> Cerca un altro ateneo</Link>
+                          <Link to={{pathname:"/trova-ateneo"}}><FontAwesomeIcon icon={faSearch}></FontAwesomeIcon> Cerca un altro ateneo</Link>
                         </Col>
                       </Row>
                       <br/>

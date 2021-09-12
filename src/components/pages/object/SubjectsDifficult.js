@@ -12,6 +12,8 @@ class SubjectsDifficult extends React.Component {
             course: this.props.course,
             subjectsDifficult: 0,
             isLoaded: false,
+            error:false, 
+            errorName: "",
         }
     }
  
@@ -27,10 +29,15 @@ class SubjectsDifficult extends React.Component {
                 subjectsDifficult: json.result,
             })
             console.log(this.state.subjectsDifficult)
+        }).catch(e => {this.setState({
+            error:true, 
+            errorName: e,
+            isLoaded:true, 
         })
+          })
     }
     render() {
-        var {isLoaded, subjectsDifficult} = this.state;
+        var {isLoaded, subjectsDifficult, error} = this.state;
         var subjectsDifficultPerc=(subjectsDifficult*100)/10;
         if (!isLoaded)
         {
@@ -38,10 +45,18 @@ class SubjectsDifficult extends React.Component {
         }
         else 
         {
-            return <>
-            <h6 ><b>Difficoltà delle materie <i>(difficoltà di comprensione, mole di studio elevata...)</i></b></h6>
+            if(!error)
+            {
+                return <>
+            <h6 ><b>Difficoltà delle materie </b><i>(difficoltà di comprensione, mole di studio elevata...)</i></h6>
             <ProgressBar  animated now={subjectsDifficultPerc} label={subjectsDifficult} />
             </>
+             }
+             else
+             {
+               return <Alert variant="danger">Impossibile recuperare i dati richiesti</Alert>
+             }
+            
             
         }
       
