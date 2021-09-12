@@ -48,7 +48,7 @@ class SubjectsDifficult extends React.Component {
             if(!error)
             {
                 return <>
-            <h6 ><b>Difficoltà delle materie <i>(difficoltà di comprensione, mole di studio elevata...)</i></b></h6>
+            <h6 ><b>Difficoltà delle materie </b><i>(difficoltà di comprensione, mole di studio elevata...)</i></h6>
             <ProgressBar  animated now={subjectsDifficultPerc} label={subjectsDifficult} />
             </>
              }

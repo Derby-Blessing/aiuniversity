@@ -7,7 +7,7 @@ import Recensisci from "./components/pages/Recensisci";
 import Consigliami from "./components/pages/Consigliami";
 import InfoUni from "./components/pages/subpages/InfoUni";
 import TrovaAteneo from "./components/pages/TrovaAteneo";
-import TrovaCorsoDiLaurea from "./components/pages/TrovaCorsoDiLaurea";
+import TrovaCorso from "./components/pages/TrovaCorso";
 import DettaglioCorso from "./components/pages/subpages/DettaglioCorso";
 import ReviewAlgorithm from "./components/pages/ReviewAlgorithm";
 import SignUp from "./components/pages/SignUp";
@@ -27,7 +27,7 @@ function App() {
           <Route
             path="/trova-corso-di-laurea"
             exact
-            component={TrovaCorsoDiLaurea}
+            component={TrovaCorso}
           />
           <Route path="/dettaglio-corso" exact component={DettaglioCorso} />
           <Route path="/review-algorithm" exact component={ReviewAlgorithm} />

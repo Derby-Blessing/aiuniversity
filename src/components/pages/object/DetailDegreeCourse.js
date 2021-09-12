@@ -10,6 +10,7 @@ import VoteAverage from "../object/VoteAverage";
 import DegreeAverage from "../object/DegreeAverage";
 import DurationAverage from "../object/DurationAverage";
 import DidacticQuality from "../object/DidacticQuality";
+import LaboratoryAverage from "../object/LaboratoryAverage";
 import TeachingQuality from "../object/TeachingQuality";
 import ExamsDifficult from "../object/ExamsDifficult";
 import SubjectsDifficult from "../object/SubjectsDifficult";
@@ -86,6 +87,7 @@ class DetailDegreeCourse extends React.Component {
             <ListGroup.Item><TeachingQuality university={this.state.university} course ={this.state.course}></TeachingQuality></ListGroup.Item>
             <ListGroup.Item><ExamsDifficult university={this.state.university} course ={this.state.course}></ExamsDifficult></ListGroup.Item>
             <ListGroup.Item><SubjectsDifficult university={this.state.university} course ={this.state.course}></SubjectsDifficult></ListGroup.Item>
+            <ListGroup.Item><LaboratoryAverage university={this.state.university} course ={this.state.course}></LaboratoryAverage></ListGroup.Item>
           </ListGroup>
         </Card.Body>
         </Card>

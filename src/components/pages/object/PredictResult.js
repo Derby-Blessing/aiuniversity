@@ -31,15 +31,15 @@ class PredictResult extends React.Component {
       .then(response => response.json())
       .then(json => this.setState({
         predict: json.result,
-        isLoaded: true
-      }),
-      localStorage.setItem('arriveByForm', false)
-      ).catch(e => {this.setState({
+        isLoaded: true,
+      })).catch(e => {this.setState({
         error:true, 
         errorName: e,
         isLoaded:true, 
     })
       })
+      localStorage.setItem('arriveByForm', false)
+      localStorage.setItem('infoStudent', "")
       console.log(JSON.stringify(this.state.infoStudent) )
       console.log(requestOptions )
       console.log('chiamata')

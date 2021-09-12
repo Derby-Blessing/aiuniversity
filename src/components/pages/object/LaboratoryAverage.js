@@ -1,16 +1,16 @@
 import React from 'react';
 import ReactStars from 'react-stars';
-import { Alert, Spinner, ProgressBar, ListGroup,   Form,Col, Row,FormControl,Card,Container } from 'react-bootstrap';
+import { Alert, Spinner, ProgressBar,   Form,Col, Row,FormControl,Card,Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-class ExamsDifficult extends React.Component {
+class LaboratoryAverage extends React.Component {
     constructor(props)
     {
         super(props)
         this.state ={
             university: this.props.university,
             course: this.props.course,
-            examsDifficult: 0,
+            labAverage: 0,
             isLoaded: false,
             error:false, 
             errorName: "",
@@ -19,16 +19,16 @@ class ExamsDifficult extends React.Component {
  
     componentDidMount()
     {
-        const link='http://localhost:8008/getExamsDifficultAverangebyCourse/'+ this.state.university+'/'+this.state.course
+        const link='http://localhost:8008/getLaboratoryAverangebyCourse/'+ this.state.university+'/'+this.state.course
         
         fetch(link)
         .then(res=> res.json())
         .then(json => {
             this.setState({
                 isLoaded:true, 
-                examsDifficult: json.result,
+                labAverage: json.result,
             })
-            console.log(this.state.examsDifficult)
+            console.log(this.state.labAverage)
         }).catch(e => {this.setState({
             error:true, 
             errorName: e,
@@ -37,28 +37,28 @@ class ExamsDifficult extends React.Component {
           })
     }
     render() {
-        var {isLoaded, examsDifficult, error} = this.state;
-        var examsDifficultPerc=(examsDifficult*100)/10;
+        var {isLoaded, labAverage, error} = this.state;
+        var labAveragePerc=(labAverage*100)/10;
         if (!isLoaded)
         {
-            return <p>Loading...<Spinner animation="border" size="sm" /></p>
+            return <Alert><Spinner animation="border" variant="primary" /> Loading..</Alert> 
         }
         else 
         {
             if(!error)
             {
-
-                    return <>
-                        <h6 ><b>Difficoltà degli esami </b><i>( difficoltà nel passare gli esami, organizzazione delle sessioni di esame)</i></h6>
-                        <ProgressBar  animated now={examsDifficultPerc} label={examsDifficult} />
+                return <>
+                        <h6 ><b>Quantità di attività pratiche nel corso</b></h6>
+                        <ProgressBar  animated now={labAveragePerc} label={labAverage} />
                         </>
              }
              else
              {
                return <Alert variant="danger">Impossibile recuperare i dati richiesti</Alert>
-             }  
+             }
+            
         }
       
     }
 }
-export default ExamsDifficult
+export default LaboratoryAverage
