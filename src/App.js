@@ -23,6 +23,7 @@ function App() {
           <Route path="/recensisci" exact component={Recensisci} />
           <Route path="/consigliami" exact component={Consigliami} />
           <Route path="/trova-ateneo" exact component={TrovaAteneo} />
+          <Route path="/info-ateneo" exact component={InfoUni} />
           <Route
             path="/trova-corso-di-laurea"
             exact

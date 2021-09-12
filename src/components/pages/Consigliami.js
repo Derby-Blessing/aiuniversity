@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import PredictResult from "./object/PredictResult";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Form, Col, Modal, Row,Popover,OverlayTrigger,   FormControl, Card, Container } from "react-bootstrap";
+import { Form, Alert, Col, Modal, Row,Popover,OverlayTrigger,   FormControl, Card, Container } from "react-bootstrap";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faBook, faInfoCircle, faMapSigns } from "@fortawesome/free-solid-svg-icons";
 import { Link } from 'react-router-dom';
@@ -462,6 +462,8 @@ class Consigliami extends React.Component
     {
       super(props)
       this.state={
+        age:18, 
+        gender:"",
         region:"",
         province: "",
         high_school: "",
@@ -495,6 +497,8 @@ class Consigliami extends React.Component
     handleSubmit(event)
     {
       localStorage.setItem('infoStudent',JSON.stringify({
+        age: this.state.age,
+        gender: this.state.gender,
         region: this.state.region,
         province: this.state.province,
         high_school: this.state.high_school,
@@ -509,17 +513,37 @@ class Consigliami extends React.Component
       this.setState({
         isSubmit: true
       });
+      localStorage.setItem('arriveByForm', false);
       event.preventDefault()
   }
 
   render() {
+    const information=this.state.isSubmit
     const bg_color = { backgroundColor: "#1A237E" };
     const color = { color: "#1A237E" };
 
    
     return (
       <>
-      {this.state.isSubmit ? <PredictResult></PredictResult> :
+      {information ? 
+      <Container fluid >
+      <br></br>
+      <Container>
+        <Row className="justify-content-md-center">
+          <Col md="8">
+            <Card className="text-center">
+              <Card.Header as="h2" style={color}>
+              Il corso di laurea consigliato è
+              </Card.Header> 
+              <Card.Body>
+              <PredictResult></PredictResult>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
+      </Container>
+       :
         <center>
           <Container fluid style={bg_color}>
             <br></br>
@@ -531,9 +555,66 @@ class Consigliami extends React.Component
                       Consigliami
                     </Card.Header>
                     <Card.Body>
-                      <Card.Title style={color}><h4><FontAwesomeIcon icon={faMapSigns}></FontAwesomeIcon>Informazioni geografiche</h4></Card.Title>
                       <br/>
                       <Form onSubmit={this.handleSubmit}>
+                      <Row>
+                          <Col md>
+                            <Form.Group controlId="formGridMaterie">
+                              <Form.Label>
+                                <b>Quanti anni hai?*</b>
+                              </Form.Label>
+                              <Form.Control  
+                              type="number"
+                              min="18"
+                              value={this.state.age}
+                              name="age" 
+                              required 
+                              onChange={this.handleInputChange} 
+                              />
+                            </Form.Group>
+                          </Col>
+                        </Row>
+                        <br/>
+                      <Row>
+                          <Col md>
+                            <Form.Group as={Col} controlId="formGridPrevStudies">
+                              <Form.Label>
+                                <b>Qual'è il tuo sesso?*</b>
+                              </Form.Label>
+                                      {['radio'].map((type) => (
+                                    <div key={`default-${type}`} className="mb-3">
+                                      <Form.Check 
+                                        inline
+                                        type={type}
+                                        value='m'
+                                        label='Maschio'
+                                        name="gender"
+                                        onChange={this.handleInputChange} 
+                                      />
+                                      <Form.Check 
+                                        inline
+                                        type={type}
+                                        value='f'
+                                        label='Femmina'
+                                        name="gender"
+                                        onChange={this.handleInputChange} 
+                                      />
+                                      <Form.Check 
+                                        inline
+                                        type={type}
+                                        value='altro'
+                                        label='Altro'
+                                        name="gender"
+                                        onChange={this.handleInputChange} 
+                                      />
+                                    </div>
+                                  ))}
+                            </Form.Group>
+                          </Col>
+                        </Row>
+                        <br/>
+                        <Card.Title style={color}><h4><FontAwesomeIcon icon={faMapSigns}></FontAwesomeIcon>Informazioni geografiche</h4></Card.Title>
+                      <br/>
                       <Row>
                           <Col md="6">
                             <Form.Group controlId="formGridMaterie">

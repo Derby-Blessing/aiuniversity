@@ -47,7 +47,7 @@ class DegreeAverage extends React.Component {
         {
             if(!error)
             {
-                if (degreeAverage ==0)
+                if (degreeAverage <=0)
                 {
                     return <p><i>Nessun voto è stato trovato</i></p>
                 }

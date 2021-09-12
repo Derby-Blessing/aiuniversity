@@ -46,7 +46,7 @@ class VoteAverage extends React.Component {
         {
             if(!error)
             {
-                if (voteAverage ==0)
+                if (voteAverage <=0)
                     {
                         return <p><i>Nessun voto è stato trovato</i></p>
                     }

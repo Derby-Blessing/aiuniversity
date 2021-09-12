@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactStars from 'react-stars';
+import GetUniByCourse from "./GetUniByCourse";
 import { Alert, Spinner, ListGroup,   Form,Col, Row,FormControl,Card,Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
@@ -31,7 +32,9 @@ class PredictResult extends React.Component {
       .then(json => this.setState({
         predict: json.result,
         isLoaded: true
-      })).catch(e => {this.setState({
+      }),
+      localStorage.setItem('arriveByForm', false)
+      ).catch(e => {this.setState({
         error:true, 
         errorName: e,
         isLoaded:true, 
@@ -44,16 +47,22 @@ class PredictResult extends React.Component {
     }
     render() {
         var {isLoaded, predict, error} = this.state;
+        const color = { color: "#1A237E" };
         if (!isLoaded)
         {
-            return <Alert><Spinner animation="border" variant="primary" /> Loading..</Alert> 
+            return <p>Sto confrontando i dati{'\u00A0'}<Spinner animation="grow" variant="dark" size="sm" />{'\u00A0'}<Spinner animation="grow" variant="secondary" size="sm" />{'\u00A0'}<Spinner animation="grow" variant="light" size="sm" />   </p>
         }
         else 
         {
             if(!error)
             {
                
-                    return <span><b>{predict}</b></span>
+                    return (<>
+                    <Alert variant="success"><h1 style={{textTransform: 'capitalize'}}><b>{predict}</b></h1></Alert>
+                    <h2 style={color}>Ulteriori informazioni:</h2>
+                    <GetUniByCourse course={predict}></GetUniByCourse>
+                    </>)
+                    
                 
              }
              else
