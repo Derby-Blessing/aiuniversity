@@ -67,7 +67,7 @@ class PredictResult extends React.Component {
                   }
                   {
                   return (<> <Alert variant="success"><h1 style={{textTransform: 'capitalize'}}><b>{predict}</b></h1></Alert>
-                          <ReviewAlgorithm></ReviewAlgorithm></>)
+                          <ReviewAlgorithm course={predict}></ReviewAlgorithm></>)
                   }
                 }
                 else

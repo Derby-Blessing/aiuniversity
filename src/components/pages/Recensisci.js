@@ -107,6 +107,7 @@ class Recensisci extends React.Component {
       this.setState({
         isSubmit: true
       });
+      /*non rimuovere questo codice serve per la predizione*/
       localStorage.setItem('infoStudent',JSON.stringify({
         age: this.state.age,
         gender: this.state.gender,
@@ -130,6 +131,7 @@ class Recensisci extends React.Component {
   render() 
   {
     const information = this.state.isSubmit
+    console.log(information)
     const bg_color = { backgroundColor: "#1A237E" };
     const color = { color: "#1A237E" };
     const required = { color: "red" , fontSize: "11pt" };
@@ -166,7 +168,7 @@ class Recensisci extends React.Component {
                       Recensisci
                     </Card.Header>
                     <Card.Body>
-                      <Form>
+                      <Form onSubmit={this.handleSubmit}>
                       <Row>
                           <Col md>
                           <Form.Group as={Col} controlId="formGridGenere">
@@ -274,6 +276,7 @@ class Recensisci extends React.Component {
                                     >
                                       <Form.Check
                                         inline
+                                        value="si"
                                         label="Sì"
                                         type={type}
                                         id={`inline-${type}-1`}
@@ -283,6 +286,7 @@ class Recensisci extends React.Component {
                                       />
                                       <Form.Check
                                         inline
+                                        value="no"
                                         label="No"
                                         name="outpost" 
                                         required
@@ -346,6 +350,7 @@ class Recensisci extends React.Component {
                               {["radio"].map((type) => (
                                 <div key={`inline-${type}`} className="mb-3">
                                   <Form.Check
+                                    value="triennale"
                                     inline
                                     label="Triennale"
                                     name="study_type"
@@ -356,6 +361,7 @@ class Recensisci extends React.Component {
                                   />
                                   <Form.Check
                                     inline
+                                    value="magistrale_unico"
                                     label="Magistrale_unico"
                                     name="study_type"
                                     required
@@ -415,6 +421,7 @@ class Recensisci extends React.Component {
                                 <div key={`inline-${type}`} className="mb-3">
                                   <Form.Check
                                     inline
+                                    value="presenza"
                                     label="IN PRESENZA"
                                     name="uni_type"
                                     required
@@ -424,6 +431,7 @@ class Recensisci extends React.Component {
                                   />
                                   <Form.Check
                                     inline
+                                    value="telematica"
                                     label="TELEMATICA"
                                     name="uni_type"
                                     required
@@ -538,6 +546,7 @@ class Recensisci extends React.Component {
                                 <div key={`inline-${type}`} className="mb-3">
                                   <Form.Check
                                     inline
+                                    value="part_time"
                                     label="PART TIME"
                                     name="enrolment_type"
                                     required
@@ -547,6 +556,7 @@ class Recensisci extends React.Component {
                                   />
                                   <Form.Check
                                     inline
+                                    value="full_time"
                                     label="FULL TIME"
                                     name="enrolment_type"
                                     required
@@ -586,6 +596,7 @@ class Recensisci extends React.Component {
                               </Form.Label>
                               <Form.Control
                                 type="number"
+                                step="0.01"
                                 min="18"
                                 placeholder="Metti 0 se non hai ancora una media, Scrivi 31, per mettere 30 E LODE"
                                 name="average_grade" 
@@ -612,6 +623,7 @@ class Recensisci extends React.Component {
                                 <div key={`inline-${type}`} className="mb-3">
                                   <Form.Check
                                     inline
+                                    value="si"
                                     label="SI"
                                     name="exams_not_done"
                                     onChange={this.handleInputChange}
@@ -621,6 +633,7 @@ class Recensisci extends React.Component {
                                   <Form.Check
                                     inline
                                     label="NO"
+                                    value="no"
                                     name="exams_not_done"
                                     onChange={this.handleInputChange}
                                     type={type}
@@ -659,7 +672,7 @@ class Recensisci extends React.Component {
                               <Form.Control
                                 type="number"
                                 min="60"
-                                placeholder="Metti 0 se non hai ancora una media, Scrivi 31, per mettere 30 E LODE"
+                                placeholder="Scrivi 111, per mettere 110 E LODE"
                                 name="graduation_grade" 
                                 onChange={this.handleInputChange}
                               />
@@ -736,6 +749,7 @@ class Recensisci extends React.Component {
                                 <div key={`inline-${type}`} className="mb-3">
                                   <Form.Check
                                     inline
+                                    value="si"
                                     label="SI"
                                     name="redo_choice"
                                     required
@@ -745,6 +759,7 @@ class Recensisci extends React.Component {
                                   />
                                   <Form.Check
                                     inline
+                                    value="no"
                                     label="NO"
                                     name="redo_choice"
                                     required
@@ -808,6 +823,7 @@ class Recensisci extends React.Component {
                                 <div key={`inline-${type}`} className="mb-3">
                                   <Form.Check
                                     inline
+                                    value="si"
                                     label="SI"
                                     name="abroad_experience"
                                     required
@@ -818,6 +834,7 @@ class Recensisci extends React.Component {
                                   <Form.Check
                                     inline
                                     label="NO"
+                                    value="no"
                                     name="abroad_experience"
                                     required
                                     onChange={this.handleInputChange}
@@ -893,6 +910,7 @@ class Recensisci extends React.Component {
                                 <div key={`inline-${type}`} className="mb-3">
                                   <Form.Check
                                     inline
+                                    value="si"
                                     label="SI"
                                     name="change_degree"
                                     required
@@ -903,6 +921,7 @@ class Recensisci extends React.Component {
                                   <Form.Check
                                     inline
                                     label="NO"
+                                    value="no"
                                     name="change_degree"
                                     required
                                     onChange={this.handleInputChange}
@@ -953,7 +972,7 @@ class Recensisci extends React.Component {
                               </Form.Label>
                               <Form.Control 
                               name="other_high_school"
-                              required
+              
                               onChange={this.handleInputChange}
                               />
                             </Form.Group>
@@ -1032,6 +1051,7 @@ class Recensisci extends React.Component {
                                 <div key={`inline-${type}`} className="mb-3">
                                   <Form.Check
                                     inline
+                                    value="si"
                                     label="SI"
                                     name="choice_related_studies"
                                     required
@@ -1042,6 +1062,7 @@ class Recensisci extends React.Component {
                                   <Form.Check
                                     inline
                                     label="NO"
+                                    value="no"
                                     name="choice_related_studies"
                                     required
                                     onChange={this.handleInputChange}
@@ -1361,7 +1382,7 @@ class Recensisci extends React.Component {
                         </Row>
                         <br/>
                         <Button variant="primary" type="submit" id ="submit_button">
-                          Invia
+                          Conferma e invia
                         </Button>
                       </Form>
                     </Card.Body>
