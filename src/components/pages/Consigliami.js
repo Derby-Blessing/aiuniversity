@@ -439,10 +439,10 @@ function School() {
             Istituto professionale per l’Industria e
             l’Artigianato
           </option>
-          <option value="Istituto professionale agrario">
+          <option value="Istituto professionale agrario ">
             Istituto professionale agrario
           </option>
-          <option value="Istituto professionale economico">
+          <option value="Istituto professionale economico ">
             Istituto professionale economico
           </option>
           <option value="Istituto professionale alberghiero">

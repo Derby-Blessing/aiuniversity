@@ -4,6 +4,7 @@ import Universities from "./object/Universities.js";
 import School from "./object/School.js";
 import Province from "./object/Provinces.js";
 import Regions from "./object/Regions.js";
+import PredictResult from "./object/PredictResult.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
   Form,
@@ -22,13 +23,14 @@ import {
 
 
 
+
 class Recensisci extends React.Component {
   constructor(props)
     {
       super(props)
       this.state={
         age:18, 
-        gender:"",
+        gender:"f",
         hometown:"",
         home_province:"",
         home_region: "",
@@ -43,18 +45,20 @@ class Recensisci extends React.Component {
         department:"", 
         degree_course:"", 
         subject_area:"", 
-        enrolment_year:0, 
-        end_year:0, 
+        enrolment_year:1990, 
+        end_year:1990, 
         enrolment_type:"", 
-        graduation_grade:"", 
-        degree_year:"", 
+        graduation_grade:0, 
+        degree_year:0, 
+        average_grade:0, 
         exams_not_done:"", 
-        numb_exams_not_done:"", 
+        numb_exams_not_done:0, 
         difficult_aspect:"", 
         easy_exams:"", 
         hard_exams:"", 
         redo_choice:"", 
         expectations:"", 
+        decision_choice:"", 
         abroad_experience:"", 
         erasmus_type:"", 
         foreign_country: "",
@@ -63,7 +67,6 @@ class Recensisci extends React.Component {
         high_school:"",
         other_high_school:"",
         main_subject:"",
-        high_school:"",
         favorite_subject: "",
         baccalaureate: 0,
         choice_related_studies: "",
@@ -78,8 +81,7 @@ class Recensisci extends React.Component {
         dream_job: "",
         review: "",
         stars: 0,
-        subscription_date: "",
-        subscription_type: false,
+        subscription_type: "student",
       }
       console.log(this.state)
       console.log('inizio')
@@ -95,39 +97,64 @@ class Recensisci extends React.Component {
       this.setState({
         [name]: value
       });
-      console.log(JSON.stringify(this.state))
+      console.log(this.state)
     }
 
+    
    
     handleSubmit(event)
     {
-      localStorage.setItem('infoStudent',JSON.stringify({
-        age: this.state.age,
-        gender: this.state.gender,
-        region: this.state.region,
-        province: this.state.province,
-        high_school: this.state.high_school,
-        main_subject: this.state.main_subject,
-        prefered_subject: this.state.prefered_subject,
-        hobby:  this.state.hobby,
-        dream_work: this.state.dream_work,
-        uni_aspectations: this.state.uni_aspectations,
-        uni_decision_choice: this.state.uni_decision_choice,
-        continuous_previous_study: this.state.continuous_previous_study,
-      }));
       this.setState({
         isSubmit: true
       });
-      localStorage.setItem('arriveByForm', false);
+      localStorage.setItem('infoStudent',JSON.stringify({
+        age: this.state.age,
+        gender: this.state.gender,
+        region: this.state.home_region,
+        province: this.state.home_province,
+        high_school: this.state.high_school,
+        main_subject: this.state.main_subject,
+        prefered_subject: this.state.favorite_subject,
+        hobby:  this.state.hobby,
+        dream_work: this.state.dream_job,
+        uni_aspectations: this.state.expectations,
+        uni_decision_choice: this.state.decision_choice,
+        continuous_previous_study: this.state.choice_related_studies,
+      }));
+      localStorage.setItem('infoSubscription',JSON.stringify(this.state));
+      localStorage.setItem('arriveByForm', true);
       event.preventDefault()
   
     }
   
-  render() {
+  render() 
+  {
+    const information = this.state.isSubmit
     const bg_color = { backgroundColor: "#1A237E" };
     const color = { color: "#1A237E" };
+    const required = { color: "red" , fontSize: "11pt" };
+    const suggest = { color: "#1A237E" , fontSize: "11pt" };
     return (
       <>
+      {information ? 
+      <Container fluid >
+      <br></br>
+      <Container>
+        <Row className="justify-content-md-center">
+          <Col md="8">
+            <Card className="text-center">
+              <Card.Header as="h2" style={color}>
+              Il corso di laurea consigliato è
+              </Card.Header> 
+              <Card.Body>
+              <PredictResult></PredictResult>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
+      </Container>
+      :
         <center>
           <Container fluid style={bg_color}>
             <br></br>
@@ -143,14 +170,14 @@ class Recensisci extends React.Component {
                       <Row>
                           <Col md>
                           <Form.Group as={Col} controlId="formGridGenere">
-                              <Form.Label as="h5">Chi sei?*</Form.Label>
+                              <Form.Label as="h5">Chi sei? <span style={required}><i>(obbligatorio)</i></span></Form.Label>
                               <Form.Select 
-                              defaultValue="Scegli" 
+                              defaultValue="scegli tipo" 
                               name="subscription_type" 
                               required
                               onChange={this.handleInputChange} >
-                                <option>Studente</option>
-                                <option>Laureato</option>
+                                <option value="student" selected>Studente</option>
+                                <option value="graduate">Laureato</option>
                               </Form.Select>
                             </Form.Group>
                           </Col>
@@ -159,10 +186,12 @@ class Recensisci extends React.Component {
                         <Row>
                           <Col md>
                             <Form.Group controlId="formGridAge">
-                              <Form.Label as="h5">Quanti anni hai?*</Form.Label>
+                              <Form.Label as="h5">Quanti anni hai? <span style={required}><i>(obbligatorio)</i></span></Form.Label>
                               <Form.Control 
-                              name="subscription_type" 
+                              name="age" 
                               required
+                              type="number"
+                              min="18"
                               onChange={this.handleInputChange}
                               />
                             </Form.Group>
@@ -170,15 +199,15 @@ class Recensisci extends React.Component {
                           <br/>
                           <Col md>
                             <Form.Group as={Col} controlId="formGridGenere">
-                              <Form.Label as="h5">Genere?*</Form.Label>
+                              <Form.Label as="h5">Genere? <span style={required}><i>(obbligatorio)</i></span></Form.Label>
                               <Form.Select defaultValue="Scegli"
-                              name="subscription_type" 
+                              name="gender" 
                               required
                               onChange={this.handleInputChange}
                               >
-                                <option>Femmina</option>
-                                <option>Maschio</option>
-                                <option>Altro</option>
+                                <option value="f">Femmina</option>
+                                <option value="m">Maschio</option>
+                                <option value="altro">Altro</option>
                               </Form.Select>
                             </Form.Group>
                           </Col>
@@ -193,9 +222,9 @@ class Recensisci extends React.Component {
                             <Row>
                               <Col md="4">
                                 <Form.Group controlId="formGridResidence">
-                                  <Form.Label as="h5">Comune di provenienza:*</Form.Label>
+                                  <Form.Label as="h5">Comune di provenienza <span style={required}><i>(obbligatorio)</i></span></Form.Label>
                                   <Form.Control 
-                                  name="subscription_type" 
+                                  name="hometown" 
                                   required
                                   onChange={this.handleInputChange}
                                   />
@@ -204,9 +233,9 @@ class Recensisci extends React.Component {
                               <br/>
                               <Col md="4">
                                 <Form.Group controlId="home_province">
-                                  <Form.Label as="h5">Provincia di provenienza:*</Form.Label>
+                                  <Form.Label as="h5">Provincia di provenienza <span style={required}><i>(obbligatorio)</i></span></Form.Label>
                                   <Form.Select 
-                                  name="subscription_type" 
+                                  name="home_province" 
                                   required
                                   onChange={this.handleInputChange}
                                   aria-label="Default select example">
@@ -217,9 +246,9 @@ class Recensisci extends React.Component {
                               <br/>
                               <Col md ="4">
                                 <Form.Group controlId="home_region">
-                                  <Form.Label as="h5">Regione di provenienza:*</Form.Label>
+                                  <Form.Label as="h5">Regione di provenienza <span style={required}><i>(obbligatorio)</i></span></Form.Label>
                                   <Form.Select 
-                                  name="subscription_type" 
+                                  name="home_region" 
                                   required
                                   onChange={this.handleInputChange}
                                   aria-label="Default select example">
@@ -235,7 +264,7 @@ class Recensisci extends React.Component {
                                   controlId="formGridFuorisede"
                                 >
                                   <Form.Label as="h5">
-                                    Sei fuorisede?*
+                                    Sei fuorisede? <span style={required}><i>(obbligatorio)</i></span>
                                   </Form.Label>
                                 </Form.Group>
                                   {["radio"].map((type) => (
@@ -248,14 +277,14 @@ class Recensisci extends React.Component {
                                         label="Sì"
                                         type={type}
                                         id={`inline-${type}-1`}
-                                        name="subscription_type" 
+                                        name="outpost" 
                                         required
                                         onChange={this.handleInputChange}
                                       />
                                       <Form.Check
                                         inline
                                         label="No"
-                                        name="subscription_type" 
+                                        name="outpost" 
                                         required
                                         onChange={this.handleInputChange}
                                         type={type}
@@ -269,9 +298,9 @@ class Recensisci extends React.Component {
                             <Row>
                               <Col md>
                                 <Form.Group controlId="formGridResidence">
-                                  <Form.Label as="h5">In che città studi / hai studiato?</Form.Label>
+                                  <Form.Label as="h5">In che città studi / hai studiato? </Form.Label>
                                   <Form.Control 
-                                  name="subscription_type" 
+                                  name="study_town" 
                                   onChange={this.handleInputChange}
                                   />
                                 </Form.Group>
@@ -279,9 +308,9 @@ class Recensisci extends React.Component {
                               <br/>
                               <Col md>
                                 <Form.Group controlId="study_province">
-                                  <Form.Label as="h5">In che provincia studi / hai studiato?</Form.Label>
+                                  <Form.Label as="h5">In che provincia studi / hai studiato? </Form.Label>
                                   <Form.Select 
-                                  name="subscription_type" 
+                                  name="study_province"
                                   onChange={this.handleInputChange}
                                   aria-label="Default select example">
                                   <Province></Province></Form.Select>
@@ -290,9 +319,9 @@ class Recensisci extends React.Component {
                               <br/>
                               <Col md>
                                 <Form.Group as={Col} controlId="study_region">
-                                  <Form.Label as="h5">In che regione studi / hai studiato?</Form.Label>
+                                  <Form.Label as="h5">In che regione studi / hai studiato? </Form.Label>
                                   <Form.Select 
-                                  name="subscription_type" 
+                                  name="study_region"
                                   onChange={this.handleInputChange}
                                   aria-label="Default select example">
                                   <Regions></Regions></Form.Select>
@@ -310,7 +339,7 @@ class Recensisci extends React.Component {
                           <Col md>
                             <Form.Group as={Col} controlId="formGridstudytype">
                               <Form.Label as="h5">
-                                Che tipo di studi stai facendo/ hai fatto?*
+                                Che tipo di studi stai facendo/ hai fatto? <span style={required}><i>(obbligatorio)</i></span>
                               </Form.Label>
                             </Form.Group>
 
@@ -346,14 +375,28 @@ class Recensisci extends React.Component {
                               controlId="formGridselect_uni"
                             >
                               <Form.Label as="h5">
-                                Che università frequenti?*
+                                Che università frequenti? <span style={required}><i>(obbligatorio)</i></span>
                               </Form.Label>
                               <Form.Select 
-                              name="study_type"
-                              required
+                              name="university"
+                              required necessityIndicator="label"
                               onChange={this.handleInputChange}
                               aria-label="Default select example">
                               <Universities></Universities></Form.Select>
+                            </Form.Group>
+                          </Col>
+                          <Col md>
+                            <Form.Group as={Col} controlId="formGriddepartment">
+                              <Form.Label as="h5">
+                                Altro: 
+                              </Form.Label>
+                              <Form.Label>
+                              <span style={suggest}><i>(Scrivere il nome dell'università se non presente nell'elenco)</i></span> 
+                              </Form.Label>
+                              <Form.Control
+                              name="other_uni"
+                              onChange={this.handleInputChange}
+                              />
                             </Form.Group>
                           </Col>
                           </Row>
@@ -362,10 +405,10 @@ class Recensisci extends React.Component {
                           <Col md>
                             <Form.Group as={Col} controlId="formGridother_uni">
                               <Form.Label as="h5">
-                                Tipo di università?*
+                                Tipo di università? <span style={required}><i>(obbligatorio)</i></span>
                               </Form.Label>
                               <Form.Label>
-                                (in situazioni non di emergenza)*
+                              <span style={suggest}><i>(in situazioni non di emergenza)</i></span>
                               </Form.Label>
                             </Form.Group>
                               {["radio"].map((type) => (
@@ -397,10 +440,10 @@ class Recensisci extends React.Component {
                           <Col md>
                             <Form.Group as={Col} controlId="formGriddepartment">
                               <Form.Label as="h5">
-                                Di quale dipartimento fai parte?*
+                                Di quale dipartimento fai parte? <span style={required}><i>(obbligatorio)</i></span>
                               </Form.Label>
                               <Form.Control
-                              name="uni_type"
+                              name="department"
                               required
                               onChange={this.handleInputChange}
                               />
@@ -415,10 +458,10 @@ class Recensisci extends React.Component {
                               controlId="formGriddegree_course"
                             >
                               <Form.Label as="h5">
-                                Che corso di laurea frequenti?*
+                                Che corso di laurea frequenti? <span style={required}><i>(obbligatorio)</i></span>
                               </Form.Label>
                               <Form.Control 
-                              name="uni_type"
+                              name="degree_course"
                               required
                               onChange={this.handleInputChange}
                               />
@@ -433,13 +476,13 @@ class Recensisci extends React.Component {
                           controlId="formGridsubject_area"
                         >
                           <Form.Label as="h5">
-                            Quali sono le discipline principali del tuo corso?*
+                            Quali sono le discipline principali del tuo corso? <span style={required}><i>(obbligatorio)</i></span>
                           </Form.Label>
                           <Form.Control
                             as="textarea"
                             placeholder="Elenca le discipline principali separate da un virgola 
       (ES: scienze ambientali,matematica,biotecnologie agricole,robotica,game developing,sociologia.....)"
-                            name="uni_type"
+                            name="subject_area"
                             required
                             onChange={this.handleInputChange}
                           />
@@ -455,10 +498,10 @@ class Recensisci extends React.Component {
                           <Col md>
                             <Form.Group controlId="formGridenrolment_year">
                               <Form.Label as="h5">
-                                In che anno ti sei iscritto?*
+                                In che anno ti sei iscritto? <span style={required}><i>(obbligatorio)</i></span>
                               </Form.Label>
                               <Form.Control
-                              name="uni_type"
+                              name="enrolment_year"
                               type="number"
                               min="1990"
                               required
@@ -469,12 +512,12 @@ class Recensisci extends React.Component {
                           </Col>
                           <Form.Group as={Col} controlId="formGridend_year">
                             <Form.Label as="h5">
-                              In che anno prevedi di terminare l’università/ hai terminato?*
+                              In che anno prevedi di terminare / hai terminato l’università? <span style={required}><i>(obbligatorio)</i></span>
                             </Form.Label>
                             <Form.Control 
-                            name="uni_type"
+                            name="end_year"
                             type="number"
-                            min="1990"
+                            min={this.state.enrolment_year}
                             required
                             onChange={this.handleInputChange}
                             />
@@ -488,7 +531,7 @@ class Recensisci extends React.Component {
                               controlId="formGridenrolment_type"
                             >
                               <Form.Label as="h5">
-                                Tipologia d'iscrizione:*
+                                Tipologia d'iscrizione  <span style={required}><i>(obbligatorio)</i></span>
                               </Form.Label>
                             </Form.Group>
                               {["radio"].map((type) => (
@@ -520,10 +563,10 @@ class Recensisci extends React.Component {
                           <Col>
                             <Form.Group controlId="formGriddegree_year">
                               <Form.Label as="h5">
-                                Che anno frequenti?*
+                                Che anno frequenti? <span style={required}><i>(obbligatorio)</i></span>
                               </Form.Label>
                               <Form.Control 
-                              name="enrolment_type"
+                              name="degree_year"
                               type="number"
                               min="1"
                               max="5"
@@ -537,13 +580,16 @@ class Recensisci extends React.Component {
                         <Row>
                           <Col md>
                             <Form.Group controlId="formGridaverage_grade">
-                              <Form.Label as="h5">Che media hai? ( Solo se sei STUDENTE)</Form.Label>
+                              <Form.Label as="h5">Che media hai? </Form.Label>
+                              <Form.Label>
+                              <span style={suggest}><i>(Solo se sei STUDENTE)</i></span>
+                              </Form.Label>
                               <Form.Control
-                                as="textarea"
                                 type="number"
+                                min="18"
                                 placeholder="Metti 0 se non hai ancora una media, Scrivi 31, per mettere 30 E LODE"
-                                name="enrolment_type"
-                                    onChange={this.handleInputChange}
+                                name="average_grade" 
+                                onChange={this.handleInputChange}
                               />
                             </Form.Group>
                           </Col>
@@ -556,7 +602,10 @@ class Recensisci extends React.Component {
                               controlId="formGridexams_not_done"
                             >
                               <Form.Label as="h5">
-                                Hai degli esami indietro? ( Solo se sei STUDENTE)
+                                Hai degli esami indietro? 
+                              </Form.Label>
+                              <Form.Label>
+                              <span style={suggest}><i>(Solo se sei STUDENTE)</i></span>
                               </Form.Label>
                             </Form.Group>
                               {["radio"].map((type) => (
@@ -586,14 +635,38 @@ class Recensisci extends React.Component {
                               as={Col}
                               controlId="formGridnumb_exams_not_done"
                             >
-                              <Form.Label as="h5">Quanti sono?(Solo se hai risposto hai degli esami indietro)</Form.Label>
+                              <Form.Label as="h5">Quanti esami hai lasciato indietro?</Form.Label>
+                              <Form.Label>
+                              <span style={suggest}><i>(Solo se sei STUDENTE e hai degli esami indietro)</i></span>
+                              </Form.Label>
                               <Form.Control 
-                              name="exams_not_done"
+                              name="numb_exams_not_done"
+                              type="number"
+                              min="0"
                               onChange={this.handleInputChange}
                               />
                             </Form.Group>
                           </Col>
                         </Row>
+                        <br></br>
+                        <Row>
+                          <Col md>
+                            <Form.Group controlId="formGridaverage_grade">
+                              <Form.Label as="h5">Con che voto di laurea sei uscito? </Form.Label>
+                              <Form.Label>
+                              <span style={suggest}><i>(Solo se sei LAUREATO)</i></span>
+                              </Form.Label>
+                              <Form.Control
+                                type="number"
+                                min="60"
+                                placeholder="Metti 0 se non hai ancora una media, Scrivi 31, per mettere 30 E LODE"
+                                name="graduation_grade" 
+                                onChange={this.handleInputChange}
+                              />
+                            </Form.Group>
+                          </Col>
+                          </Row>
+                          <br/>
                         <Row>
                         <br></br>
                         <Col >
@@ -603,12 +676,12 @@ class Recensisci extends React.Component {
                         >
                           <Form.Label as="h5">
                             Qual'è/ è stato l'ASPETTO del tuo corso che ti ha messo più
-                            in difficoltà?*
+                            in difficoltà? <span style={required}><i>(obbligatorio)</i></span>
                           </Form.Label>
                           <Form.Control
                             as="textarea"
                             placeholder="Es. i professori, l'ambiente, le materie, l organizzazione della didattica..."
-                            name="exams_not_done"
+                            name="difficult_aspect"
                             required
                             onChange={this.handleInputChange}
                           />
@@ -621,13 +694,13 @@ class Recensisci extends React.Component {
                         <Form.Group as={Col} controlId="formGrideasy_exams">
                           <Form.Label as="h5">
                             Quali sono stati gli ESAMI che hai trovato
-                            più FACILI?*
+                            più FACILI? 
                           </Form.Label>
                           <Form.Control
                             as="textarea"
-                            placeholder="Scrivi NO se non hai ancora dato nessun esame"
-                            name="exams_not_done"
-                                    required
+                            placeholder="Es (diritto pubblico, diritto privato, informatica)"
+                            name="easy_exams"
+                                    
                                     onChange={this.handleInputChange}
                          />
                         </Form.Group>
@@ -636,13 +709,12 @@ class Recensisci extends React.Component {
                         <Form.Group as={Col} controlId="formGridhard_exams">
                           <Form.Label as="h5">
                             Quali sono stati  gli ESAMI che hai trovato
-                            più DIFFICILI?*
+                            più DIFFICILI? 
                           </Form.Label>
                           <Form.Control
                             as="textarea"
-                            placeholder="Scrivi NO se non hai ancora dato nessun esame"
-                            name="exams_not_done"
-                            required
+                            placeholder="Es (diritto pubblico, diritto privato, informatica)"
+                            name="hard_exams" 
                             onChange={this.handleInputChange}
                          />
                         </Form.Group>
@@ -657,7 +729,7 @@ class Recensisci extends React.Component {
                             >
                               <Form.Label as="h5">
                                 Se potessi tornare indietro, sceglieresti di
-                                nuovo questo corso di laurea?*
+                                nuovo questo corso di laurea? <span style={required}><i>(obbligatorio)</i></span>
                               </Form.Label>
                             </Form.Group>
                               {["radio"].map((type) => (
@@ -687,11 +759,12 @@ class Recensisci extends React.Component {
                           <Col md = "6">
                           <Form.Group as={Col} controlId="formGridexpectations">
                             <Form.Label as="h5">
-                              Cosa ti aspettavi da questo corso di studi?*
+                              Cosa ti aspettavi da questo corso di studi? <span style={required}><i>(obbligatorio)</i></span>
                             </Form.Label>
                             <Form.Control 
-                            name="redo_choice"
+                            name="expectations"
                             required
+                            placeholder="Raccontaci le tue aspettative su questa laurea prima di intramprendere questo percorso"
                             as="textarea"
                             onChange={this.handleInputChange}
                             />
@@ -699,6 +772,23 @@ class Recensisci extends React.Component {
                           </Col>
                         </Row>
                         <br></br>
+                        <Row>
+                        <Col md = "6">
+                          <Form.Group as={Col} controlId="formGridexpectations">
+                            <Form.Label as="h5">
+                              Come mai hai scelto questo corso di laurea? <span style={required}><i>(obbligatorio)</i></span>
+                            </Form.Label>
+                            <Form.Control 
+                            name="decision_choice"
+                            required
+                            placeholder="Raccontaci il/i  motivo/i che ti ha spinto ad iscriverti"
+                            as="textarea"
+                            onChange={this.handleInputChange}
+                            />
+                          </Form.Group>
+                          </Col>
+                          </Row>
+                          <br/>
                         <Card.Title as="h4" style={color}>
                           Esperienze all'estero
                         </Card.Title>
@@ -711,7 +801,7 @@ class Recensisci extends React.Component {
                             >
                               <Form.Label as="h5">
                                 Hai fatto un’esperienza all’estero durante la
-                                tua carriera univeristaria?*
+                                tua carriera univeristaria? <span style={required}><i>(obbligatorio)</i></span>
                               </Form.Label>
                             </Form.Group>
                               {["radio"].map((type) => (
@@ -748,7 +838,7 @@ class Recensisci extends React.Component {
                                 Che tipo di esperienza? 
                               </Form.Label>
                               <Form.Control 
-                              name="abroad_experience"
+                              name="erasmus_type"
                               onChange={this.handleInputChange}
                               />
                             </Form.Group>
@@ -763,7 +853,7 @@ class Recensisci extends React.Component {
                                 esperienza? 
                               </Form.Label>
                               <Form.Control 
-                              name="abroad_experience"
+                              name="foreign_country"
                               onChange={this.handleInputChange}
                               />
                             </Form.Group>
@@ -778,7 +868,7 @@ class Recensisci extends React.Component {
                                 esperienza? 
                               </Form.Label>
                               <Form.Control
-                              name="abroad_experience"                            
+                              name="foreign_city"                            
                               onChange={this.handleInputChange}
                                />
                             </Form.Group>
@@ -796,7 +886,7 @@ class Recensisci extends React.Component {
                               controlId="formGridchange_degree"
                             >
                               <Form.Label as="h5">
-                                Hai mai cambiato corso durante questa laurea?*
+                                Hai mai cambiato corso durante questa laurea? <span style={required}><i>(obbligatorio)</i></span>
                               </Form.Label>
                             </Form.Group>
                               {["radio"].map((type) => (
@@ -830,16 +920,16 @@ class Recensisci extends React.Component {
                         </Card.Title>
                         <br></br>
                         <Row>
-                          <Col md>
+                          <Col md="6">
                             <Form.Group
                               className="mb-3"
                               controlId="select_highschool"
                             >
                               <Form.Label as="h5">
-                                Che scuola hai fatto alle superiori?*
+                                Che scuola hai fatto alle superiori? <span style={required}><i>(obbligatorio)</i></span>
                               </Form.Label>
                               <Form.Select 
-                              name="choice_related_studies"
+                              name="high_school"
                               required
                               onChange={this.handleInputChange}
                               aria-label="Default select example">
@@ -847,7 +937,31 @@ class Recensisci extends React.Component {
                               </Form.Select>
                             </Form.Group>
                           </Col>
+                          <Col md="6">
+                            <Form.Group
+                              className="mb-3"
+                              controlId="formGridmain_subject"
+                            >
+                              <Form.Label as="h5">
+                                Altro 
+                              </Form.Label>
+                              <Form.Label >
+                              <Form.Label>
+                              <span style={suggest}><i>(Solo se la tua scuola non era presente nella lista)</i></span>
+                              </Form.Label>
+                               
+                              </Form.Label>
+                              <Form.Control 
+                              name="other_high_school"
+                              required
+                              onChange={this.handleInputChange}
+                              />
+                            </Form.Group>
+                          </Col>
+                          </Row>
                           <br/>
+                          <Row>
+                          
                           <Col md>
                             <Form.Group
                               className="mb-3"
@@ -855,10 +969,10 @@ class Recensisci extends React.Component {
                             >
                               <Form.Label as="h5">
                                 Quali erano le materie principali della tua
-                                scuola?*
+                                scuola? <span style={required}><i>(obbligatorio)</i></span>
                               </Form.Label>
                               <Form.Control 
-                              name="choice_related_studies"
+                              name="main_subject"
                               required
                               placeholder="Es. (italiano, storia, geografia)"
                               onChange={this.handleInputChange}
@@ -874,10 +988,10 @@ class Recensisci extends React.Component {
                               controlId="formGridfavorite_subject"
                             >
                               <Form.Label as="h5">
-                                Qual era la tua/ le tue materie preferita?* 
+                                Qual era la tua/ le tue materie preferita? <span style={required}><i>(obbligatorio)</i></span> 
                               </Form.Label>
                               <Form.Control 
-                              name="choice_related_studies"
+                              name="favorite_subject"
                               as="textarea"
                               required
                               placeholder="Es. (italiano, storia...)"
@@ -892,15 +1006,15 @@ class Recensisci extends React.Component {
                               controlId="formGridbaccalaureate"
                             >
                               <Form.Label as="h5">
-                                Che voto hai preso alla maturita?*
+                                Che voto hai preso alla maturita? <span style={required}><i>(obbligatorio)</i></span>
                               </Form.Label>
                               <Form.Control 
-                              name="choice_related_studies"
+                              name="baccalaureate"
                               required
                               min="60"
                               type="number"
                               onChange={this.handleInputChange}
-                              placeholder="Metti 111 se sei uscito con 110 E LODE" />
+                              placeholder="Metti 101 se sei uscito con 100 e lode" />
                             </Form.Group>
                           </Col>
                             <br/>
@@ -911,7 +1025,7 @@ class Recensisci extends React.Component {
                             >
                               <Form.Label as="h5">
                                 Hai scelto un corso di laurea inerente agli
-                                studi delle superiori?*
+                                studi delle superiori? <span style={required}><i>(obbligatorio)</i></span>
                               </Form.Label>
                             </Form.Group>
                               {["radio"].map((type) => (
@@ -944,7 +1058,7 @@ class Recensisci extends React.Component {
                           <Card className="text-center">
                             <Card.Header as="h4" style={color}>
                               Assegna una valutazione da 1 a 10 alle seguenti
-                              caratteristiche riguardanti la tua università:{" "}
+                              caratteristiche riguardanti la tua università 
                             </Card.Header>
                             <Form.Label as="h5">
                               METTI 0 SE, in base alla tua esperienza, NON PUOI
@@ -961,10 +1075,10 @@ class Recensisci extends React.Component {
                               controlId="formGriddidactic_quality"
                             >
                               <Form.Label as="h5">
-                                Qualità dell'offerta formativa:*
+                                Qualità dell'offerta formativa <span style={required}><i>(obbligatorio)</i></span>
                               </Form.Label>
                               <Form.Select 
-                              name="choice_related_studies"
+                              name="didactic_quality"
                               required
                               onChange={this.handleInputChange}
                               aria-label="Default select example">
@@ -990,10 +1104,10 @@ class Recensisci extends React.Component {
                               controlId="formGridteaching_quality"
                             >
                               <Form.Label as="h5">
-                                Qualità dell’insegnamento dei professori:*
+                                Qualità dell’insegnamento dei professori <span style={required}><i>(obbligatorio)</i></span>
                               </Form.Label>
                               <Form.Select 
-                              name="choice_related_studies"
+                              name="teaching_quality"
                               required
                               onChange={this.handleInputChange}
                               aria-label="Default select example">
@@ -1021,10 +1135,10 @@ class Recensisci extends React.Component {
                               controlId="formGridexams_difficulties"
                             >
                               <Form.Label as="h5">
-                                Difficoltà degli esami:*
+                                Difficoltà degli esami <span style={required}><i>(obbligatorio)</i></span>
                               </Form.Label>
                               <Form.Select 
-                              name="choice_related_studies"
+                              name="exams_difficulties"
                               required
                               onChange={this.handleInputChange}
                               aria-label="Default select example">
@@ -1050,10 +1164,10 @@ class Recensisci extends React.Component {
                               controlId="formGridsubjects_difficulties"
                             >
                               <Form.Label as="h5">
-                                Difficoltà delle materie:*
+                                Difficoltà delle materie <span style={required}><i>(obbligatorio)</i></span>
                               </Form.Label>
                               <Form.Select 
-                              name="choice_related_studies"
+                              name="subjects_difficulties"
                               required
                               onChange={this.handleInputChange}
                               aria-label="Default select example">
@@ -1081,10 +1195,10 @@ class Recensisci extends React.Component {
                               controlId="formGridenvironment_quality"
                             >
                               <Form.Label as="h5">
-                                Qualità degli spazi di ateneo:*
+                                Qualità degli spazi di ateneo <span style={required}><i>(obbligatorio)</i></span>
                               </Form.Label>
                               <Form.Select 
-                              name="choice_related_studies"
+                              name="environment_quality"
                               required
                               onChange={this.handleInputChange}
                               aria-label="Default select example">
@@ -1110,10 +1224,10 @@ class Recensisci extends React.Component {
                               controlId="formGridstudents_relationship"
                             >
                               <Form.Label as="h5">
-                                Qualità del rapporto con i colleghi:*
+                                Qualità del rapporto con i colleghi <span style={required}><i>(obbligatorio)</i></span>
                               </Form.Label>
                               <Form.Select 
-                              name="choice_related_studies"
+                              name="students_relationship"
                               required
                               onChange={this.handleInputChange}
                               aria-label="Default select example">
@@ -1142,11 +1256,11 @@ class Recensisci extends React.Component {
                           >
                             <Form.Label as="h5">
                               Quanto sono presenti attività pratiche progettuali
-                              o di laboratorio?*
+                              o di laboratorio? <span style={required}><i>(obbligatorio)</i></span>
                             </Form.Label>
                             
                             <Form.Select 
-                              name="choice_related_studies"
+                              name="laboratories"
                               required
                               onChange={this.handleInputChange}
                               aria-label="Default select example">
@@ -1178,14 +1292,14 @@ class Recensisci extends React.Component {
                                 controlId="formGridhobby"
                               >
                                 <Form.Label as="h5">
-                                  Quali sono i tuoi hobby?*
+                                  Quali sono i tuoi hobby? <span style={required}><i>(obbligatorio)</i></span>
                                 </Form.Label>
                                 <Form.Control
-                                name="choice_related_studies"
+                                name="hobby"
                                 required
                                 onChange={this.handleInputChange}
                                   as="textarea"
-                                  placeholder="(separa i vari hobby con una virgola"
+                                  placeholder="(separa i vari hobby con una virgola)"
                                 />
                               </Form.Group>
                             </Col>
@@ -1196,10 +1310,12 @@ class Recensisci extends React.Component {
                                 controlId="formGriddream_job"
                               >
                                 <Form.Label as="h5">
-                                  Qual è il lavoro dei tuoi sogni?*
+                                  Qual è/sono il/i lavoro/i dei tuoi sogni? <span style={required}><i>(obbligatorio)</i></span>
                                 </Form.Label>
                                 <Form.Control
-                                name="choice_related_studies"
+                                name="dream_job"
+                                as="textarea"
+                                placeholder="(se ci sono più lavori, separali con una virgola)"
                                 required
                                 onChange={this.handleInputChange}
                                  />
@@ -1214,10 +1330,10 @@ class Recensisci extends React.Component {
                                 controlId="formGridreview"
                               >
                                 <Form.Label as="h5">
-                                  Lascia una recensione sul tuo corso laurea:*
+                                  Lascia una recensione sul tuo corso laurea <span style={required}><i>(obbligatorio)</i></span>
                                 </Form.Label>
                                 <Form.Control
-                                name="choice_related_studies"
+                                name="review"
                                 required
                                 onChange={this.handleInputChange}
                                   as="textarea"
@@ -1229,13 +1345,12 @@ class Recensisci extends React.Component {
                           <br/>
                           <Row>
                             <Col>
-                          <Form.Label as="h5">Voto recensione*</Form.Label>
+                          <Form.Label as="h5">Stelle recensione<span style={required}><i>(obbligatorio)</i></span></Form.Label>
                           <Form.Select 
-                          name="choice_related_studies"
+                          name="stars"
                           required
                           onChange={this.handleInputChange}
                           aria-label="Default select example">
-                            <option>Stars</option>
                             <option value="1">⭐</option>
                             <option value="2">⭐⭐</option>
                             <option value="3">⭐⭐⭐</option>
@@ -1245,7 +1360,7 @@ class Recensisci extends React.Component {
                         </Col>
                         </Row>
                         <br/>
-                        <Button variant="primary" type="submit">
+                        <Button variant="primary" type="submit" id ="submit_button">
                           Invia
                         </Button>
                       </Form>
@@ -1256,7 +1371,8 @@ class Recensisci extends React.Component {
             </Container>
           </Container>
         </center>
-      </>
+     
+                              }</>
     );
   }
 }

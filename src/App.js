@@ -9,7 +9,7 @@ import InfoUni from "./components/pages/subpages/InfoUni";
 import TrovaAteneo from "./components/pages/TrovaAteneo";
 import TrovaCorso from "./components/pages/TrovaCorso";
 import DettaglioCorso from "./components/pages/subpages/DettaglioCorso";
-import ReviewAlgorithm from "./components/pages/ReviewAlgorithm";
+import ReviewAlgorithm from "./components/pages//subpages/ReviewAlgorithm";
 import SignUp from "./components/pages/SignUp";
 
 function App() {

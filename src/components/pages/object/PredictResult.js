@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactStars from 'react-stars';
 import GetUniByCourse from "./GetUniByCourse";
+import ReviewAlgorithm from "../subpages/ReviewAlgorithm";
 import { Alert, Spinner, ListGroup,   Form,Col, Row,FormControl,Card,Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
@@ -56,18 +57,38 @@ class PredictResult extends React.Component {
         {
             if(!error)
             {
-               
+              console.log(localStorage.getItem('infoSubscription'))
+              
+                if(localStorage.getItem('infoSubscription') !=null)
+                {
+                  if(predict =="")
+                  {
+                    <Alert variant="warning">Questa scuola superiore non era presente nei nostri server, grazie per averla inserita!</Alert>
+                  }
+                  {
+                  return (<> <Alert variant="success"><h1 style={{textTransform: 'capitalize'}}><b>{predict}</b></h1></Alert>
+                          <ReviewAlgorithm></ReviewAlgorithm></>)
+                  }
+                }
+                else
+                {
+                  if(predict =="")
+              {
+                <Alert variant="warning">Non abbiamo trovato la tua scuola superiore nei nostri server. <br/> Riprova più avanti nel caso qualche studente la inserisca.</Alert>
+              }
+              else{
                     return (<>
                     <Alert variant="success"><h1 style={{textTransform: 'capitalize'}}><b>{predict}</b></h1></Alert>
                     <h2 style={color}>Ulteriori informazioni:</h2>
                     <GetUniByCourse course={predict}></GetUniByCourse>
                     </>)
-                    
+                }
+              }
                 
              }
              else
              {
-               return <Alert variant="danger">Impossibile recuperare i dati richiesti</Alert>
+               return <Alert variant="danger">Impossibile effettuare il consiglio, contatta l'amministratore se il problema persiste</Alert>
              }
             
             
