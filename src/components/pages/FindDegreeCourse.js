@@ -1,6 +1,6 @@
 import React from "react";
 import CourseList from "./object/CourseList";
-import InfoCorso from "./subpages/InfoCorso";
+import InfoCorso from "./subpages/DegreeInfo";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
   Form,

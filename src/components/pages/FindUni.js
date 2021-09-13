@@ -1,6 +1,6 @@
 import React from "react";
 import UniList from "./object/UniList";
-import InfoUni from "./subpages/InfoUni";
+import InfoUni from "./subpages/UniInfo";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
   Form,

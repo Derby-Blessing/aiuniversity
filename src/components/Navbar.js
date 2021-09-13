@@ -29,20 +29,20 @@ class Menu extends React.Component {
                   Home
                 </Nav.Link>
                 <Nav.Link style={color} href="/about">
-                  About
+                  Chi siamo
                 </Nav.Link>
                 <Nav.Link style={color} href="/consigliami">
-                  Chiedi Un Consiglio
+                  Chiedi un consiglio
                 </Nav.Link>
-                <Nav.Link style={color} href="/recensisci">
-                  Lascia Una Recensione
+                <Nav.Link style={color} href="/raccontaci-esperienza">
+                  Raccontaci la tua esperienza
                 </Nav.Link>
                 <NavDropdown title="Altro" id="collasible-nav-dropdown">
                   <NavDropdown.Item style={color} href="/trova-ateneo">
-                    Cerca Ateneo
+                    Cerca un ateneo
                   </NavDropdown.Item>
                   <NavDropdown.Item style={color} href="/trova-corso-di-laurea">
-                    Cerca Corso Di Laurea
+                    Cerca un corso Di Laurea
                   </NavDropdown.Item>
                 </NavDropdown>
               </Nav>

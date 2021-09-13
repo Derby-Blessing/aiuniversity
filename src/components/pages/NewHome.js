@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardGroup, Button , Row, Col} from "react-bootstrap";
+import { Card, CardGroup, Carousel, Button ,Image, Row, Col} from "react-bootstrap";
 import advice from "../images/advice1.jpg";
 import trovaUni from "../images/trova_ateneo.png";
 import recensisci from "../images/recensisci3.png";
@@ -7,71 +7,99 @@ import trovaCorso from "../images/trova-corso.png";
 
 class NewHome extends React.Component {
   render() {
+    const color ={color: '#1A237E'};
+    const dark ={color: 'black'};
     return (
       <>
+      <br/><br/>
         <center>
-          <CardGroup>
-            <Card>
-              <Card.Img variant="top" src={advice} height="50%"/>
+        
+        <Carousel slide="false" indicators="false">
+            <Carousel.Item>
+              <Card className="d-block w-50"
+                alt="first slide">
+              <Image variant="top" src={advice} width="80%"/>
               <Card.Body>
-                <Card.Title>Consigliami</Card.Title>
-                <Card.Text>La pagina consigliami.....</Card.Text>
+                <Card.Title><h1 style={color}>Lasciati consigliare dall'esperienza</h1></Card.Title>
+                <Card.Text style={dark}>Devi scegliere il corso di laurea? <br/>
+                Non sai quale scegliere e ti senti confuso?
+                <br/> <b>Lasciati consigliare da AIuniversity!</b> <br/>
+              </Card.Text>
+              <a href="/consigliami"><Button>
+               Vai
+              </Button></a>
               </Card.Body>
-              <Button
-                variant="primary"
-                type="submit"
-                onClick={this.handleClick}
-              >
-               <Card.Link href="/consigliami">Vedi</Card.Link> 
-              </Button>
+              <br/>
             </Card>
-            <Card>
-              <Card.Img variant="top" src={recensisci} height="50%"/>
+              
+            </Carousel.Item>
+
+            <Carousel.Item>
+            <Card className="d-block w-50"
+                alt="Second slide">
+              
+              
+              <Image variant="top" src={recensisci} width="50%"/>
               <Card.Body>
-                <Card.Title>Lasciaci Una Recensione</Card.Title>
-                <Card.Text>
-                  Hai avuta una buona esperienza con AIUniversity? Hai trovato
-                  l'ateneo che volevi?
+                <Card.Title><h1 style={color}>Raccontaci la tua esperienza</h1></Card.Title>
+                <Card.Text  style={dark}>
+                 Finalmente un posto in cui si può liberammente recensire il prorio corso di laurea!<br/>
+                  Non vedevi l'ora eh? <br/>  <b>Corri a raccontarci la tua esperienza all'università, questa volta sarai tu a valutare! </b><br/>
+                  Il tutto in completo anonimato, senza doverti preoccupare di ritorsioni!<br/>
                 </Card.Text>
-              </Card.Body>
-              <Button
-                variant="primary"
-                type="submit"
-                onClick={this.handleClick}
+                <a href="/raccontaci-esperienza"><Button
+                variant="primary" 
               >
-                <Card.Link href="/recensisci">Vedi</Card.Link> 
-              </Button>
+                Vai
+              </Button></a>
+              <br/>
+              </Card.Body>
+
             </Card>
-            <Card>
-              <Card.Img variant="top" src={trovaUni} height="50%" />
+            </Carousel.Item>
+            <Carousel.Item>
+            <Card className="d-block w-50"
+                alt="third slide">
+
+              <Image variant="top" src={trovaCorso} width="50%"/>
               <Card.Body>
-                <Card.Title>Trova Ateneo</Card.Title>
-                <Card.Text>
-                  Non sei sicura di quale ateneo vuoi frequentare? Sei indecisa
-                  su quale corso è giusto per te? Non preoccuparti più....Siamo
-                  qui per aiutarti.......
+                <Card.Title><h1 style={color}>Trova corso di laurea</h1></Card.Title>
+                <Card.Text  style={dark}>
+                Trova tutte le informazioni inerenti una particolare laurea,
+                utilizzando il  nostro  speciale motore di ricerca che recupera le informazioni direttamente dall'esperienza di altri studenti<br/>
+                <br/><b>Alcune infomazioni le puoi trovare solo qui!</b> 
                 </Card.Text>
-              </Card.Body>
-              <Button
-                variant="primary"
+                <a href="/trova-corso-di-laurea"><Button
+                variant="primary" 
               >
-                <Card.Link href="/recensisci">Vedi</Card.Link> 
-              </Button>
+                Corri a vedere!
+              </Button></a>
+              <br/>
+              </Card.Body>
             </Card>
-            <Card>
-              <Card.Img variant="top" src={trovaCorso}  height="50%"/>
+            </Carousel.Item>
+            <Carousel.Item>
+            <Card className="d-block w-50"
+                alt="third slide">
+
+              <Image variant="top" src={trovaUni} width="50%"/>
               <Card.Body>
-              sdjdjiojsf
-              </Card.Body>
-              <Button
-                variant="primary"
-                type="submit"
-                onClick={this.handleClick}
+                <Card.Title><h1 style={color}>Trova  Ateneo</h1></Card.Title>
+                <Card.Text  style={dark}>
+                Trova le lauree che ci sono in un determinato ateneo,
+                utilizzando il  nostro  speciale motore di ricerca che recupera le informazioni direttamente dall'esperienza di altri studenti<br/>
+                <br/><b>Alcune infomazioni le puoi trovare solo qui!</b> 
+                </Card.Text>
+                <a href="/trova-corso-di-laurea"><Button
+                variant="primary" 
               >
-                Vedi
-              </Button>
+                Corri a vedere!
+              </Button></a>
+              <br/>
+              </Card.Body>
             </Card>
-          </CardGroup>
+            </Carousel.Item>
+          </Carousel>
         </center>
       </>
     );
