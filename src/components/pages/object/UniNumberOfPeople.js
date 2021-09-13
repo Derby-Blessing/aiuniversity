@@ -17,7 +17,7 @@ class UniNumberOfPeople extends React.Component {
 
   componentDidMount()
   {
-      const link='http://localhost:8008/getNumberOfPeopleByUni/'+ this.state.university
+      const link='https://aiuniversity-api.herokuapp.com/getNumberOfPeopleByUni/'+ this.state.university
       console.log(link)
       fetch(link)
       .then(res=> res.json())

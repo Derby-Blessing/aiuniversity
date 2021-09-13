@@ -27,7 +27,7 @@ class PredictResult extends React.Component {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(this.state.infoStudent)
           };
-        const link='http://localhost:8008/predict'
+        const link='https://aiuniversity-api.herokuapp.com/predict'
         fetch(link,requestOptions)
       .then(response => response.json())
       .then(json => this.setState({

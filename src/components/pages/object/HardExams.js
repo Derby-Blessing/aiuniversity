@@ -18,7 +18,7 @@ class HardExams extends React.Component {
  
     componentDidMount()
     {
-        const link='http://localhost:8008/getAllHardExams/'+ this.state.university+'/'+this.state.course
+        const link='https://aiuniversity-api.herokuapp.com/getAllHardExams/'+ this.state.university+'/'+this.state.course
         
         fetch(link)
         .then(res=> res.json())

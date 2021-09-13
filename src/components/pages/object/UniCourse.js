@@ -20,7 +20,7 @@ class UniCourse extends React.Component {
  
     componentDidMount()
     {
-        const link='http://localhost:8008/getAllCoursesByUni/'+ this.state.university
+        const link='https://aiuniversity-api.herokuapp.com/getAllCoursesByUni/'+ this.state.university
         
         fetch(link)
         .then(res=> res.json())

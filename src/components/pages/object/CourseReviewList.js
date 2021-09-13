@@ -19,7 +19,7 @@ class CourseReview extends React.Component {
  
     componentDidMount()
     {
-        const link='http://localhost:8008/getReviewListbyCourse/'+ this.state.university+'/'+this.state.course
+        const link='https://aiuniversity-api.herokuapp.com/getReviewListbyCourse/'+ this.state.university+'/'+this.state.course
         
         fetch(link)
         .then(res=> res.json())

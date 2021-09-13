@@ -17,7 +17,7 @@ class Region extends React.Component {
  
     componentDidMount()
     {
-        const link='http://localhost:8008/getRegionByUni/'+ this.state.university
+        const link='https://aiuniversity-api.herokuapp.com/getRegionByUni/'+ this.state.university
         console.log(link)
         fetch(link)
         .then(res=> res.json())

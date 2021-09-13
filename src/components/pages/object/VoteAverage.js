@@ -19,7 +19,7 @@ class VoteAverage extends React.Component {
  
     componentDidMount()
     {
-        const link='http://localhost:8008/getMarkAveragebyCourse/'+ this.state.university+'/'+this.state.course
+        const link='https://aiuniversity-api.herokuapp.com/getMarkAveragebyCourse/'+ this.state.university+'/'+this.state.course
         
         fetch(link)
         .then(res=> res.json())

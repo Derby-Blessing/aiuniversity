@@ -35,7 +35,7 @@ render() {
             <ListGroup.Item><h6><span   style={color}><b>AIuniversity</b></span> è una piattaforma che ha lo scopo di aiutare gli studenti prossimi alla maturità o i 
                     maturandi a scegliere il percorso universitario.</h6></ListGroup.Item>
             <ListGroup.Item><h6><span   style={color}><b>AIuniversity</b></span> permette di recuperare  l'esperienza nelle università italiane vissute dagli studenti e
-           dalle studentesse, dai laureati e dalle laureate, nelle università italiane. Questi dati vengono raccolti
+           dalle studentesse, dai laureati e dalle laureate. Questi dati vengono raccolti
             in forma anonima e successivamente aggregati.</h6></ListGroup.Item>
             <ListGroup.Item><h6><span   style={color}><b>AIuniversity</b></span> contiene un'algoritmo di intelligenza artificiale
            in grado di confrontare centinaia di esperienze universitarie e consigliare al maturando il corso di laurea sulla 

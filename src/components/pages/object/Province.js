@@ -18,7 +18,7 @@ class Province extends React.Component {
  
     componentDidMount()
     {
-        const link='http://localhost:8008/getProvinceByUni/'+ this.state.university
+        const link='https://aiuniversity-api.herokuapp.com/getProvinceByUni/'+ this.state.university
         console.log(link)
         fetch(link)
         .then(res=> res.json())

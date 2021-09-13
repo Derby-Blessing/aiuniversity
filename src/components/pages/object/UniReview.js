@@ -17,7 +17,7 @@ class UniReview extends React.Component {
  
     componentDidMount()
     {
-        const link='http://localhost:8008/getReviewAverangebyUni/'+ this.state.university
+        const link='https://aiuniversity-api.herokuapp.com/getReviewAverangebyUni/'+ this.state.university
         
         fetch(link)
         .then(res=> res.json())

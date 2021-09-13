@@ -15,7 +15,7 @@ class UniList extends React.Component {
  
     componentDidMount()
     {
-        fetch('http://localhost:8008/getAllUni')
+        fetch('https://aiuniversity-api.herokuapp.com/getAllUni')
         .then(res=> res.json())
         .then(json => {
             this.setState({

@@ -19,7 +19,7 @@ class TeachingQuality extends React.Component {
  
     componentDidMount()
     {
-        const link='http://localhost:8008/getTeachingQualityAverangebyCourse/'+ this.state.university+'/'+this.state.course
+        const link='https://aiuniversity-api.herokuapp.com/getTeachingQualityAverangebyCourse/'+ this.state.university+'/'+this.state.course
         
         fetch(link)
         .then(res=> res.json())

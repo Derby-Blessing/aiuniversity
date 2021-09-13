@@ -15,7 +15,7 @@ class CourseList extends React.Component {
  
     componentDidMount()
     {
-        fetch('http://localhost:8008/getAllCourses')
+        fetch('https://aiuniversity-api.herokuapp.com/getAllCourses')
         .then(res=> res.json())
         .then(json => {
             this.setState({

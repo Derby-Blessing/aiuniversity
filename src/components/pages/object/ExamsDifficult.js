@@ -19,7 +19,7 @@ class ExamsDifficult extends React.Component {
  
     componentDidMount()
     {
-        const link='http://localhost:8008/getExamsDifficultAverangebyCourse/'+ this.state.university+'/'+this.state.course
+        const link='https://aiuniversity-api.herokuapp.com/getExamsDifficultAverangebyCourse/'+ this.state.university+'/'+this.state.course
         
         fetch(link)
         .then(res=> res.json())

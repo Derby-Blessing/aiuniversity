@@ -52,19 +52,19 @@ class AddInformation extends React.Component {
     componentDidMount()
     {
 
-      const linkFeedback='http://localhost:8008/addPredictReview'
-      const linkAddSubscription = 'http://localhost:8008/addNewSubscriptions'
+      const linkFeedback='https://aiuniversity-api.herokuapp.com/addPredictReview'
+      const linkAddSubscription = 'https://aiuniversity-api.herokuapp.com/addNewSubscriptions'
       var linkAnswerSurvey ='';
       
       if (this.state.infoSubscription != "" )
       {
         if (this.state.type == 'student')
         {
-          linkAnswerSurvey='http://localhost:8008/addNewStudent'
+          linkAnswerSurvey='https://aiuniversity-api.herokuapp.com/addNewStudent'
         }
         else
         {
-          linkAnswerSurvey='http://localhost:8008/addNewGraduate'
+          linkAnswerSurvey='https://aiuniversity-api.herokuapp.com/addNewGraduate'
         }
       
 

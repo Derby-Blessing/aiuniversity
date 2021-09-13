@@ -20,7 +20,7 @@ class CourseNumberOfPeople extends React.Component {
 
   componentDidMount()
   {
-      const link='http://localhost:8008/getNumberOfPeopleByCourseAndUni/'+ this.state.university+'/'+this.state.course
+      const link='https://aiuniversity-api.herokuapp.com/getNumberOfPeopleByCourseAndUni/'+ this.state.university+'/'+this.state.course
       console.log(link)
       let response = fetch(link)
       .then(res=> res.json())
