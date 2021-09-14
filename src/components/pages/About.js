@@ -82,7 +82,7 @@ render() {
               <Card.Img variant="top" src={fra}  />
             <Card.Body >
               <Card.Title>Francesca Rossi</Card.Title>
-              <p>Ideatrice - Projet Manager - Full stak developer</p>
+              <p>Ideatrice - Project Manager - Full stack developer</p>
            </Card.Body>
            </Card>
            
@@ -91,7 +91,7 @@ render() {
               <Card.Img variant="top" src={derby}  />
             <Card.Body>
               <Card.Title>Derby Atswei Kommey</Card.Title>
-              <p>front end developer</p>
+              <p>Front end developer</p>
            </Card.Body>
            </Card>
           
