@@ -580,7 +580,7 @@ class Consigliami extends React.Component
                           <Col md>
                             <Form.Group as={Col} controlId="formGridPrevStudies">
                               <Form.Label>
-                                <b>Qual'è il tuo sesso?*</b>
+                                <b>Qual è il tuo sesso?*</b>
                               </Form.Label>
                                       {['radio'].map((type) => (
                                     <div key={`default-${type}`} className="mb-3">
