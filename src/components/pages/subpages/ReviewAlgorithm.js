@@ -76,9 +76,9 @@ class ReviewAlgorithm extends React.Component {
              
              : 
 
-              <Row className="justify-content-md-center">
+              <Row >
                 <Col md="auto">
-                  <Card >
+                  <Card style={{textAlign: 'left'}} >
                     <Card.Header as="h2" style={color}>
                       Lasciaci un feedback sull'algoritmo di predizione
                     </Card.Header>
@@ -91,7 +91,7 @@ class ReviewAlgorithm extends React.Component {
                               controlId="formGriduni_advised"
                             >
                               <Form.Label as="h5">
-                                Il consiglio che ti abbiamo dato coincide con il corso di laurea che
+                                Il consiglio che ti abbiamo consigliato coincide con il corso di laurea che effettivamente
                                 hai scelto?<span style={required}><i>(obbligatorio)</i></span>
                               </Form.Label>
                             </Form.Group>
@@ -132,7 +132,7 @@ class ReviewAlgorithm extends React.Component {
                               controlId="formGriduni_comparison"
                             >
                               <Form.Label as="h5">
-                                Quanto è lontano dai tuoi studi il corso
+                                Quanto è distante dai tuoi studi il corso
                                 consigliato? <span style={required}><i>(obbligatorio)</i></span>
                               </Form.Label>
                             </Form.Group>
@@ -189,7 +189,7 @@ class ReviewAlgorithm extends React.Component {
                               controlId="formGriduni_decision"
                             >
                               <Form.Label as="h5">
-                                Se tornassi indietro cosa faresti? <span style={required}><i>(obbligatorio)</i></span>
+                                Immagina di poter tornare indietro nel tempo, cosa faresti? <span style={required}><i>(obbligatorio)</i></span>
                               </Form.Label>
                             </Form.Group>
                             <Form>
@@ -236,7 +236,7 @@ class ReviewAlgorithm extends React.Component {
                               controlId="formGriddiff_uni"
                             >
                               <Form.Label as="h5">
-                                Se faresti una "SCELTA COMPLETAMENTE DIVERSA", quale sarebbe?
+                                Se la risposta precedente è stata  "AVREI FATTO UNA SCELTA COMPLETAMENTE DIVERSA", che corso avresti scelto?
                               </Form.Label>
                             </Form.Group>
                           </Col>
@@ -270,7 +270,7 @@ class ReviewAlgorithm extends React.Component {
                           <Col md>
                             <Form.Group as={Col} controlId="formGridalgorithm">
                               <Form.Label as="h5">
-                                Pensi che l'algoritmo possa aiutare i ragazzi
+                                Pensi che l'algoritmo possa aiutare i maturandi
                                 nella scelta del corso di laurea? <span style={required}><i>(obbligatorio)</i></span>
                               </Form.Label>
                             </Form.Group>

@@ -163,9 +163,22 @@ class Recensisci extends React.Component {
             <Container>
               <Row>
                 <Col md="auto">
+                <Card className="text-center">
+                    <Card.Body>
+                    <h5>Hai fratelli e/o sorelle, amici e parenti che prossimamente dovranno intraprendere il percorso universitario, ma sono indecisi sul CORSO o sull’ATENEO da scegliere?<br/>
+                    Aiutaci ad inserire le informazioni mancanti sui percorsi di studio presenti in Italia, compilando il form sottostante.<br/> Aiutando noi, aiuterai loro nel momento della scelta.
+                    
+                   </h5>
+                    </Card.Body>
+                  </Card>
+                  </Col>
+                  </Row>
+                  <br/>
+                  <Row>
+                <Col md="auto">
                   <Card className="text-center">
                     <Card.Header as="h1" style={color}>
-                      Recensisci
+                      Raccontaci la tua esperienza
                     </Card.Header>
                     <Card.Body>
                       <Form onSubmit={this.handleSubmit}>
@@ -688,7 +701,7 @@ class Recensisci extends React.Component {
                           controlId="formGriddifficult_aspect"
                         >
                           <Form.Label as="h5">
-                            Qual'è/ è stato l'ASPETTO del tuo corso che ti ha messo più
+                            Qual è stato l'ASPETTO del tuo corso che ti ha messo più
                             in difficoltà? <span style={required}><i>(obbligatorio)</i></span>
                           </Form.Label>
                           <Form.Control
@@ -707,12 +720,13 @@ class Recensisci extends React.Component {
                         <Form.Group as={Col} controlId="formGrideasy_exams">
                           <Form.Label as="h5">
                             Quali sono stati gli ESAMI che hai trovato
-                            più FACILI? 
+                            più FACILI? <span style={required}><i>(obbligatorio)</i></span>
                           </Form.Label>
                           <Form.Control
                             as="textarea"
                             placeholder="Es (diritto pubblico, diritto privato, informatica)"
                             name="easy_exams"
+                            required
                                     
                                     onChange={this.handleInputChange}
                          />
@@ -722,12 +736,13 @@ class Recensisci extends React.Component {
                         <Form.Group as={Col} controlId="formGridhard_exams">
                           <Form.Label as="h5">
                             Quali sono stati  gli ESAMI che hai trovato
-                            più DIFFICILI? 
+                            più DIFFICILI? <span style={required}><i>(obbligatorio)</i></span>
                           </Form.Label>
                           <Form.Control
                             as="textarea"
                             placeholder="Es (diritto pubblico, diritto privato, informatica)"
                             name="hard_exams" 
+                            required
                             onChange={this.handleInputChange}
                          />
                         </Form.Group>

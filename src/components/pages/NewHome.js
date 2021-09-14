@@ -43,7 +43,7 @@ class NewHome extends React.Component {
               <Card.Body>
                 <Card.Title><h2 style={color}>Raccontaci la tua esperienza</h2></Card.Title>
                 <Card.Text  style={dark}>
-                 Finalmente un posto in cui si può liberammente recensire il prorio corso di laurea!<br/>
+                 Finalmente un posto in cui si può liberamente recensire il proprio corso di laurea!<br/>
                   Non vedevi l'ora eh? <br/>  <b>Corri a raccontarci la tua esperienza all'università, questa volta sarai tu a valutare! </b><br/>
                   Il tutto in completo anonimato, senza doverti preoccupare di ritorsioni!<br/>
                 </Card.Text>
