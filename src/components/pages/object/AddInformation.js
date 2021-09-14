@@ -5,6 +5,7 @@ import ReviewAlgorithm from "../subpages/ReviewAlgorithm";
 import { Alert, Spinner, ListGroup,   Form,Col, Row,FormControl,Card,Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
+ 
 
 class AddInformation extends React.Component {
     constructor(props)
@@ -159,7 +160,8 @@ class AddInformation extends React.Component {
                     <Card.Title ><h3>Condividi il link con i tuoi colleghi</h3></Card.Title> 
 
                     </Card.Body>
-                    <p>Se condividi il link, possiamo raccogliere ulteriori informazioni sui corsi di laurea e quindi aiuterai gli studenti delle superiori nel scegliere il percorso migliore.</p>
+                    <h4>Aiutaci a raccogliere altre esperienze per migliorare il sistema </h4>
+                    <br/><h2> Condividi il sito con i tuoi colleghi!</h2>
                     </Card>
 
                     </>)

@@ -47,6 +47,7 @@ class InfoUni extends React.Component {
       return (
         <>
             <Container fluid>
+            <br></br>
               <Container>
                 <Row className="justify-content-md-center">
                   <Col >

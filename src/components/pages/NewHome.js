@@ -16,11 +16,11 @@ class NewHome extends React.Component {
         
         <Carousel slide="false" indicators="false">
             <Carousel.Item>
-              <Card className="d-block w-50"
+              <Card className="d-block w-75"
                 alt="first slide">
               <Image variant="top" src={advice} width="80%"/>
               <Card.Body>
-                <Card.Title><h1 style={color}>Lasciati consigliare dall'esperienza</h1></Card.Title>
+                <Card.Title><h2 style={color}>Lasciati consigliare dall'esperienza</h2></Card.Title>
                 <Card.Text style={dark}>Devi scegliere il corso di laurea? <br/>
                 Non sai quale scegliere e ti senti confuso?
                 <br/> <b>Lasciati consigliare da AIuniversity!</b> <br/>
@@ -35,13 +35,13 @@ class NewHome extends React.Component {
             </Carousel.Item>
 
             <Carousel.Item>
-            <Card className="d-block w-50"
+            <Card className="d-block w-75"
                 alt="Second slide">
               
               
               <Image variant="top" src={recensisci} width="50%"/>
               <Card.Body>
-                <Card.Title><h1 style={color}>Raccontaci la tua esperienza</h1></Card.Title>
+                <Card.Title><h2 style={color}>Raccontaci la tua esperienza</h2></Card.Title>
                 <Card.Text  style={dark}>
                  Finalmente un posto in cui si può liberammente recensire il prorio corso di laurea!<br/>
                   Non vedevi l'ora eh? <br/>  <b>Corri a raccontarci la tua esperienza all'università, questa volta sarai tu a valutare! </b><br/>
@@ -58,12 +58,12 @@ class NewHome extends React.Component {
             </Card>
             </Carousel.Item>
             <Carousel.Item>
-            <Card className="d-block w-50"
+            <Card className="d-block w-75"
                 alt="third slide">
 
               <Image variant="top" src={trovaCorso} width="50%"/>
               <Card.Body>
-                <Card.Title><h1 style={color}>Trova corso di laurea</h1></Card.Title>
+                <Card.Title><h2 style={color}>Trova corso di laurea</h2></Card.Title>
                 <Card.Text  style={dark}>
                 Trova tutte le informazioni inerenti una particolare laurea,
                 utilizzando il  nostro  speciale motore di ricerca che recupera le informazioni direttamente dall'esperienza di altri studenti<br/>
@@ -79,12 +79,12 @@ class NewHome extends React.Component {
             </Card>
             </Carousel.Item>
             <Carousel.Item>
-            <Card className="d-block w-50"
+            <Card className="d-block w-75"
                 alt="third slide">
 
               <Image variant="top" src={trovaUni} width="50%"/>
               <Card.Body>
-                <Card.Title><h1 style={color}>Trova  Ateneo</h1></Card.Title>
+                <Card.Title><h2 style={color}>Trova  Ateneo</h2></Card.Title>
                 <Card.Text  style={dark}>
                 Trova le lauree che ci sono in un determinato ateneo,
                 utilizzando il  nostro  speciale motore di ricerca che recupera le informazioni direttamente dall'esperienza di altri studenti<br/>

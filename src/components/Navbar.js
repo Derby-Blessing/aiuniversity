@@ -42,7 +42,7 @@ class Menu extends React.Component {
                     Cerca un ateneo
                   </NavDropdown.Item>
                   <NavDropdown.Item style={color} href="/trova-corso-di-laurea">
-                    Cerca un corso Di Laurea
+                    Cerca un corso di laurea
                   </NavDropdown.Item>
                 </NavDropdown>
               </Nav>

@@ -59,9 +59,9 @@ class PredictResult extends React.Component {
             {
               console.log(localStorage.getItem('infoSubscription'))
               
-                if(localStorage.getItem('infoSubscription') !=null)
+                if(localStorage.getItem('infoSubscription') !='null')
                 {
-                  if(predict =="")
+                  if(predict == '')
                   {
                     <Alert variant="warning">Questa scuola superiore non era presente nei nostri server, grazie per averla inserita!</Alert>
                   }
@@ -72,7 +72,7 @@ class PredictResult extends React.Component {
                 }
                 else
                 {
-                  if(predict =="")
+                  if(predict =='')
               {
                 <Alert variant="warning">Non abbiamo trovato la tua scuola superiore nei nostri server. <br/> Riprova più avanti nel caso qualche studente la inserisca.</Alert>
               }

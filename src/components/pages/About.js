@@ -5,6 +5,7 @@ import {
   Row,
   Image,
   Card,
+  Alert,
   CardGroup,
   Button,
   Container,
@@ -55,17 +56,17 @@ render() {
           <Card.Header > 
           <h1 style={color}>Chi Siamo?</h1>
           
-          <h5>Siamo 3 ragazze frequentanti il terzo anno di ingegneria dei sistemi informativi, presso l'università di Parma.
+          <Alert variant="primary"><h5>Siamo 3 ragazze frequentanti il terzo anno di ingegneria dei sistemi informativi, presso l'università di Parma.
              <br/>Come tutti i ragazzi alla fine di un percorso, ci siamo trovate davanti a una scelta per il nostro futuro. 
             <br/> Di fronte a questo problema ci siamo chieste come l'intelligenza artificiale potesse aiutarci.<br/> Così abbiamo studiato e lavorato per creare un sistema open source che aiuti le future matricole a scegliere il percorso giusto.
-             </h5>
+             </h5></Alert>
              </Card.Header>
           <Card.Body className="text-center">
             <blockquote >
-      <p>
+      <h4>
         {' '}
         Ci auguriamo che questo sistema sia utile a tutti coloro che devono affrontare la scelta della laurea.<br/> Continueremo a lavorarci nel tempo per migliorarlo e aggiungere nuove funzionalità{' '}
-      </p>
+      </h4><br/>
       <footer className="blockquote-footer">
         <cite title="Source Title">Francesca, Derby, Martina</cite>
       </footer>

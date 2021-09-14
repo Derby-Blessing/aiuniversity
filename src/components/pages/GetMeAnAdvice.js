@@ -513,7 +513,8 @@ class Consigliami extends React.Component
       this.setState({
         isSubmit: true
       });
-      localStorage.setItem('arriveByForm', false);
+      localStorage.setItem('arriveByForm', true);
+      localStorage.setItem('infoSubscription', null);
       event.preventDefault()
   }
 
